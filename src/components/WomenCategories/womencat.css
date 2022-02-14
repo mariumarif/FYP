@@ -1,0 +1,24 @@
+.checked {
+    color: orange;
+    /* display: inline-block; */
+  }
+  .men-salon-1{
+    width: 350px;
+  }
+  .salon-categoryy{
+      border: 1px solid gray;
+      padding: 10px;
+
+  }
+  .men-arrow{
+      float: right;
+      background-color: none !important;
+      color: black !important;
+  }
+  .salon-div{
+    text-decoration: none !important;
+    color: black;
+  }
+  .salon-div:hover{
+    color: black;
+  }

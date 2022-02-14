@@ -1,0 +1,25 @@
+.salon-registration-form{
+    max-width: 50% !important;
+}
+.reg-form{
+    margin-top: 2rem;
+    box-shadow: 0px 0px 1px 2px #888888;
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+.registration-form-submit-button{
+    margin: 1rem 0 2rem 0;
+    background-color: #F68D2F;
+}
+.form-group>input:enabled{
+    border: 1px solid black;
+}
+.form-group>input#salonImage:enabled{
+    border: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .salon-registration-form{
+        max-width: 80%;
+    }
+}

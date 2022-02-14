@@ -1,0 +1,222 @@
+body{
+    overflow-x: hidden;
+}
+
+/* COVER STYLING */
+.head{
+    background-color: #f68d2f;
+    color: white;
+    /* text-align: center; */
+    height: 350px;
+    padding-top: 90px;
+}
+/* DEMO-SPECIFIC STYLES */
+.head h2 {
+   color: white;
+   font-family: monospace;
+   overflow: hidden; /* Ensures the content is not revealed until the animation */
+   white-space: nowrap; /* Keeps the content on a single line */
+   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+   letter-spacing: .15em; /* Adjust as needed */
+   animation: 
+     typing 3.5s steps(30, end),
+     blink-caret .5s step-end infinite;
+     font-size: 50px;
+ }
+ 
+ /* The typing effect */
+ @keyframes typing {
+   from { width: 0 }
+   to { width: 100% }
+ }
+ 
+ /* The typewriter cursor effect */
+ @keyframes blink-caret {
+   from, to { border-color: transparent }
+   50% { border-color: white }
+ }
+ .cms-breadcrumb {
+  list-style: none;
+ }
+ul {
+   list-style: none;
+   padding: 0;
+   margin: 0 0 15px;
+}
+
+.cms-breadcrumb li {
+   display: inline-block;
+   font-size: 14px;
+   color: inherit;
+}
+ul li {
+   list-style-position: inside;
+}
+.cms-breadcrumb li a, .cms-breadcrumb li span {
+   color: inherit;
+   font-size: 17px;
+}
+
+a, a:hover{
+   outline: none;
+   text-decoration: none !important;
+}
+.cms-breadcrumb li a:after {
+   content: '\f105';
+   font-family: FontAwesome;
+   margin: 0 11px;
+   color: inherit;
+}
+.text{
+    margin-top: 25px;
+    padding-left: 130px;
+    text-align: justify;
+}
+.join-img{
+    height: 250px;
+    width: 300px;
+    position: relative;
+    bottom: 80px;
+    left: 100px;
+}
+
+.message-col {
+    height: 100px !important;
+      
+}
+
+.input-gap:active,.input-gap:focus{
+    border: 2px solid rgb(160, 155, 155) !important;
+    box-shadow: rgb(0, 0, 0) !important;
+    background-color: #f8f8f8 !important;
+}
+::placeholder{
+    color: black !important;
+    font-family: 'BalooMed';
+    margin: 0 !important;
+    padding: 0 !important;
+   
+}
+@media (max-width:568px){
+    .input-gap{
+        margin-bottom: 20px;
+    }
+}
+@media (max-width:480px){
+    .input-gap{
+        margin-bottom: 20px;
+    }
+}
+.submit-butn {
+    margin-top: 18px;
+    background-color: #f68d2f !important;
+    color: white !important;
+    display: flex;
+    justify-content: center;
+    border: none;
+    position: relative;
+    left: 670px;
+    width: 150px;
+    height: 50px;
+    font-weight: bold !important;
+ text-transform: uppercase;
+}
+.submit-butn:hover{
+    background: none !important;
+    border: 2px solid #f68d2f ;
+    color: #f68d2f !important;
+    
+
+
+}
+@media (max-width:1199px) {
+    .submit-butn{
+       position: relative;
+       left: 490px !important;
+    }
+}
+@media (max-width:991px) {
+    .submit-butn{
+        position: relative;
+        bottom: 70px;
+        
+       
+        
+    }
+}
+@media (max-width:767px) {
+    .submit-butn{
+       left: 375px !important;
+    }
+}
+ @media (max-width:575px) {
+    .submit-butn{
+        width: 120px;
+        position: relative;
+        left: 330px !important;
+    }
+}
+
+@media (max-width:991px) {
+    .num1{
+       margin-bottom: 20px !important;
+    }
+}
+@media (max-width:767px) {
+    .num2{
+       margin-bottom: 20px !important;
+    }
+}
+textarea{
+    resize: none !important;
+}
+.attach-btn {
+    background-color: lightgray !important;
+    color: black !important;
+    margin-top: 20px;
+    width: 150px;
+    margin-left: 16px;
+    height: 50px;
+   
+}
+.attach-btn:hover{
+    background: none !important;
+    border: 2px solid black;
+
+}
+.con-mar {
+    margin-top: 15px;
+}
+
+@media (max-width:411px){
+    .contact-align{
+        text-align: center;
+    }
+} 
+.contactwid{
+    margin-top: 40px;
+}
+
+h1{
+   
+    text-align: center;
+    font-weight: bolder !important;
+    color:#f68d2f  ;
+    letter-spacing: 5px;
+}
+h4{
+    font-weight: bolder !important;
+  
+}
+
+.content
+{
+ 
+  text-align: center;
+  
+}
+
+input{
+   box-shadow:none !important;
+   
+}
