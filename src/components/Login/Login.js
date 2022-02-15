@@ -3,25 +3,16 @@ import './login.css';
 import logoo from '../../images/icon.png';
 import {Link} from 'react-router-dom';
 import SignUp from '../SignUp/SignUp';
+import axios from "axios"
 
 const Login = () => {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
-  function loginUser(){
-    // console.log(name,email,password);
+  async function loginUser  (){
+  console.log(email,password);
     let data={email,password};
-    fetch("http://localhost:3000/login",{
-      method:"POST",
-      headers:{
-        'Accept':'application/json',
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify(data)
-    }).then((result)=>{
-      console.log("result",result);
-   
-    })
-    alert("Login Successfully!");
+   const res= await axios.post("http://localhost:3000/login",data)
+   console.log({res})
     }
   return (
     <>
@@ -62,10 +53,10 @@ const Login = () => {
         <h1 className='signin-heading'>Login</h1>
 
         <div className="col-sm-12 pt-5">
-          <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.email)}} id="email" placeholder="Email" name="email" required />
+          <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}} id="email" placeholder="Email" name="email" required />
         </div>
         <div className="col-sm-12 pt-5">
-          <input type="password" className="form-control" value={password} onChange={(e)=>{setPassword(e.target.password)}} id="password" placeholder="Password" name="password" required />
+          <input type="password" className="form-control" value={password} onChange={(e)=>{setPassword(e.target.value)}} id="password" placeholder="Password" name="password" required />
         </div>
 
         {/* <div className="col-sm-12 pt-3 pb-4 text-left">

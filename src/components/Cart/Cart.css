@@ -1,0 +1,53 @@
+.main-div1{
+    display: flex;
+    margin-top: 4.5rem;
+}
+.div-left{
+    padding-left: 2%;
+    width: 70%;
+}
+.btn-danger{
+    float: right;
+}
+.div-right{
+    width: 30%;
+}
+.sal-drpdown{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgb(206,212,218);
+    border-radius: 25px;
+}
+.sal-drpdown::content{
+    border: 1px solid red;
+}
+.form-sets{
+    padding-top: 1rem !important;
+}
+#total-amount{
+    width: 50%;
+    border-radius: 0%;
+    display: inline;
+    margin-left: 1rem;
+    background-color: white;
+}
+
+#book-appointment-address{
+    background-color: white;
+}
+#user-phone-number{
+    background-color: white;
+}
+#specialInstructions{
+    background-color: white;
+}
+
+.booknow-form{
+    background-color:rgb(252, 247, 247);
+    box-shadow: rgb(148, 148, 148);
+
+    width:90%;
+    border-radius:30px;
+    text-align:center;
+    margin-top: 2%;
+}
