@@ -15,7 +15,8 @@ import BookAppointment from './components/BookAppointment/BookAppointment';
 import { BrowserRouter as Router,
   Route,Switch,Link } from 'react-router-dom';
 import ScrolltoTop from './ScrolltoTop';
-
+import SalonServices from './components/Salon_Owner/salon_services';
+import SalonInfo from './components/Salon_Owner/salon_info';
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
         <Route path='/Cart' component={Cart} />
         <Route path='/bookapp' component={BookAppointment} />
         <Route path='/joinus' component={JoinUs} />
-
+        <Route path='/salon_services' component={SalonServices} />
+        <Route path='/salon_info' component={SalonInfo} />
        
        </Switch>
       </Router>
