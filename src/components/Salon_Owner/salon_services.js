@@ -18,13 +18,33 @@ const salon_services = () => {
 
                             </a>
                         </Link>
+                        
+                        <div className='navbar-btns'>
+                            {/* <!-- Login/Signup --> */}
+                            <div className='login-signup mr-2'>
+                                <Link to='./salon_info'>
+                                    <button className='btn salon-info-btn px-4 py-2 mt-3'>
+                                        Salon Info
+                                    </button>
+                                </Link>
+                            </div>
+
+                            {/* <!-- Join Us --> */}
+                            <div className='join-btn my-3 mr-3'>
+                                <Link to='./salon_orders'>
+                                    <button className='btn salon-orders-btn px-5 py-2 mr-2'>
+                                        Salon Orders
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
                     </nav>
                 </div>
             </header>
 
 
             <div className='container mt-5'>
-                <h1 className='orange pt-5 text-center'>Saloon Services</h1>
+                <h1 className='orange pt-5 text-center'>Salon Services</h1>
                 <div className='mt-3   '>
                     <h4>Add Service</h4>
                     <form className='add-service-form'>
@@ -60,7 +80,10 @@ const salon_services = () => {
                         </tbody>
                     </table>
                 </div>
+
+                
             </div>
+
         </>
     )
 };

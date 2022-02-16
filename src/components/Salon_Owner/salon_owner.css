@@ -1,34 +1,47 @@
 th,td{
-    border: 1px solid black;
-    text-align: center;
-  }
-  .th1,.th3{
-    padding: 5px 10px 5px 10px;
-  }
-  .edit-btn,.delete-btn{
-    width: 100px;
-    margin: 5px;
-    
-  }
-  .form-input{
-    width: 25%;
-    margin-right: 0.5rem;
-  }
-  input:focus{
-    outline: 2px solid black !important;  
-  }
-  .add-service-form{
-    margin-bottom: 1rem;
-  }
-  .add-service-btn{
-    width: 100px;
-  }
-  .sal-update-btn{
-    margin-left: 2rem;
-    width: 100px;
-    height: 30px;
-  }
-  .para{
-    margin-top: 0.1rem;
-    margin-left: 1.5rem;
-  }
+  border: 1px solid black;
+  text-align: center;
+}
+.th1,.th3{
+  padding: 5px 10px 5px 10px;
+}
+.edit-btn,.delete-btn,.completed-btn,.cancel-btn,.add-service-btn,.sal-update-btn{
+  width: 100px;
+  margin: 5px;
+  background-color: #f68d2f;
+  padding: 2px;
+  
+}
+.form-input{
+  width: 25%;
+  margin-right: 0.5rem;
+}
+input:focus{
+  outline: 2px solid black !important;  
+}
+.add-service-form{
+  margin-bottom: 1rem;
+}
+
+
+
+.sal-update-btn{
+  margin-left: 2rem;
+  height: 30px;
+}
+.para{
+  margin-top: 0.1rem;
+  margin-left: 1.5rem;
+}
+.input-text-box{
+  display: none;
+}
+.salon-info-btn,.salon-orders-btn,.salon-services-btn{
+  background-color:  #f68d2f;
+  color: white;
+  width: 200px;
+  margin-right: 1rem;
+}
+table{
+  margin: auto;
+}

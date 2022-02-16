@@ -17,6 +17,7 @@ import { BrowserRouter as Router,
 import ScrolltoTop from './ScrolltoTop';
 import SalonServices from './components/Salon_Owner/salon_services';
 import SalonInfo from './components/Salon_Owner/salon_info';
+import SalonOrders from './components/Salon_Owner/salon_orders'
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
         <Route path='/joinus' component={JoinUs} />
         <Route path='/salon_services' component={SalonServices} />
         <Route path='/salon_info' component={SalonInfo} />
-       
+        <Route path='/salon_orders' component={SalonOrders} />
        </Switch>
       </Router>
       {/* </div> */}
