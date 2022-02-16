@@ -17,7 +17,11 @@ import { BrowserRouter as Router,
 import ScrolltoTop from './ScrolltoTop';
 import SalonServices from './components/Salon_Owner/salon_services';
 import SalonInfo from './components/Salon_Owner/salon_info';
-import SalonOrders from './components/Salon_Owner/salon_orders'
+import SalonOrders from './components/Salon_Owner/salon_orders';
+import AdminCategories from './components/Admin/admin_categories';
+import AdminMenSalon from './components/Admin/admin_men_sal';
+import AdminWomenSalon from './components/Admin/admin_women_sal';
+import NewSalonRequest from './components/Admin/new_salon_requests';
 
 function App() {
   return (
@@ -42,6 +46,10 @@ function App() {
         <Route path='/salon_services' component={SalonServices} />
         <Route path='/salon_info' component={SalonInfo} />
         <Route path='/salon_orders' component={SalonOrders} />
+        <Route path='/admin_categories' component={AdminCategories} />
+        <Route path='/admin_men_sal' component={AdminMenSalon} />
+        <Route path='/admin_women_sal' component={AdminWomenSalon} />
+        <Route path='/new_salon_requests' component={NewSalonRequest} />
        </Switch>
       </Router>
       {/* </div> */}

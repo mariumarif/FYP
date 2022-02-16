@@ -1,0 +1,26 @@
+.sal-img-span{
+    border: 1px solid black;
+    padding: 6px;
+}
+.add-salon-btn
+{
+    float: right;
+    margin-right: 1.5rem;
+    width: 292px;
+    background-color: #F68D2F;
+}
+.add-salon-form,.search-salon-form
+{
+    padding: 15px 0px 15px 20px;
+    border: 1px solid black;
+}
+.sal-edit-btn,.sal-remove-btn,.search-salon-btn,.salreq-complete-btn,.salreq-reject-btn
+{
+    width: 100px;
+    margin: 5px;
+    background-color: #f68d2f;
+    padding: 2px;
+}
+table{
+    width: 100%;
+}
