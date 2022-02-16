@@ -111,23 +111,23 @@ import "./Cart.css";
 import logoo from "../../images/icon.png";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-
+const bookingFields = {
+  salon_id: 1,
+  user_id: 1,
+  address: "",
+  phoneNumber: "",
+  message: "",
+  total_amount: "",
+  appointment_place: "",
+  appointment_at: +new Date(),
+  discount: 0,
+  services: [],
+};
 const Cart = () => {
   const [services, setServices] = useState([]);
   const [storedNames, setStoredNames] = useState([]);
   const [cartData, setCartData] = useState([]);
-  const [bookingData, setBookingData] = useState({
-    salon_id: 1,
-    user_id: 1,
-    address: "",
-    phoneNumber: "",
-    message: "",
-    total_amount: "",
-    appointment_place: "",
-    appointment_at: +new Date(),
-    discount: 0,
-    services: [],
-  });
+  const [bookingData, setBookingData] = useState({ ...bookingFields });
   const getServices = async () => {
     //const response = await fetch('http://localhost:3000/services?id=1?salon_id'+"="+{id});
     const response = await fetch(
@@ -139,14 +139,17 @@ const Cart = () => {
   const handleBookAppointment = async () => {
     const { services, ...appointment } = bookingData;
     try {
-        const resp = await axios.post("http://localhost:3000/appointment", {
-          services,
-          appointment,
-        });
-        debugger
-
+      const resp = await axios.post("http://localhost:3000/appointment", {
+        services,
+        appointment,
+      });
+      if (resp?.data?.id) {
+          const{total_amount,...bf}=bookingFields
+        setBookingData(prev=>({...prev,...bf}));
+        alert("Appoinment Booked Successfuly");
+      }
     } catch (error) {
-        console.log({error})
+      console.log({ error });
     }
   };
   useEffect(() => {
@@ -268,17 +271,19 @@ const Cart = () => {
         </div>
         <div className="div-right">
           <div className="container booknow-form">
-            <div className="col-sm-12 pt-4 text-left form-sets">
-              <label for="service">Address:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="book-appointment-address"
-                name="address"
-                value={bookingData.address}
-                onChange={handleChange}
-              />
-            </div>
+            {bookingData.appointment_place === "homeservice" && (
+              <div className="col-sm-12 pt-4 text-left form-sets">
+                <label for="service">Address:</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="book-appointment-address"
+                  name="address"
+                  value={bookingData.address}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
             <div className="col-sm-12 pt-4 text-left form-sets">
               <label for="service">Phone Number:</label>
               <input
