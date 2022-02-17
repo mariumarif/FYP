@@ -16,10 +16,10 @@ th,td{
   width: 300px;
   background-color: #f68d2f;
   padding: 2px;
-  margin:  5px 40% !important;
+  margin:  5px !important;
 }
 .form-input{
-  width: 25%;
+  width: 24%;
   margin-right: 0.5rem;
 }
 input:focus{
