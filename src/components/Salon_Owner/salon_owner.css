@@ -5,12 +5,18 @@ th,td{
 .th1,.th3{
   padding: 5px 10px 5px 10px;
 }
-.edit-btn,.delete-btn,.completed-btn,.cancel-btn,.add-service-btn,.sal-update-btn{
+.edit-btn,.delete-btn,.completed-btn,.cancel-btn,.add-service-btn,.sal-service-update-btn{
+
   width: 100px;
   margin: 5px;
   background-color: #f68d2f;
+  padding: 2px; 
+}
+.sal-update-btn{
+  width: 300px;
+  background-color: #f68d2f;
   padding: 2px;
-  
+  margin:  5px 40% !important;
 }
 .form-input{
   width: 25%;
@@ -22,9 +28,6 @@ input:focus{
 .add-service-form{
   margin-bottom: 1rem;
 }
-
-
-
 .sal-update-btn{
   margin-left: 2rem;
   height: 30px;

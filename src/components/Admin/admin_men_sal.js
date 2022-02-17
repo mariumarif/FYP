@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import Modal from '../Modal';
 import "./admin.css";
 import logoo from '../../images/icon.png';
 import { useParams, Link } from 'react-router-dom';
 
 
 const admin_men_sal = () => {
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <>
             <header className="fixed fixed-top">
@@ -70,7 +72,16 @@ const admin_men_sal = () => {
                                 <td>0321-0001112</td>
                                 <td>Best in Hair Cutting and Trimming Since 1990</td>
                                 <td>
-                                    <button className='sal-edit-btn'>Edit </button>
+                                    <button className='sal-edit-btn' onClick={()=>setIsOpen(true)}>Edit </button>
+                                        <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
+                                            <form>
+                                                <input type='text' class="form-control mb-2" id='sal-name' name='sal-name' placeholder='Salon Name'/>
+                                                <input type='text' class="form-control mb-2" id='sal-address' name='sal-address' placeholder='Salon Address'/>
+                                                <input type='number' class="form-control mb-2" id='sal-phone' name='sal-phone' placeholder='Salon Phone'/>
+                                                <input type='text' class="form-control mb-2" id='sal-description' name='sal-description' placeholder='Salon Description'/>
+                                                <button type="submit" class="btn sal-service-update-btn">Update</button>
+                                            </form>
+                                        </Modal>
                                     <button className='sal-remove-btn'>Remove</button>
                                 </td>
                             </tr>
@@ -100,4 +111,4 @@ const admin_men_sal = () => {
         </>
     );
 };
-export default admin_men_sal;
+export default admin_men_sal;   

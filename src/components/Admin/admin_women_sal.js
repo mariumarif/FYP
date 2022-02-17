@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Modal from '../Modal';
 import "./admin.css";
 import logoo from "../../images/icon.png";
 import { useParams, Link } from "react-router-dom";
@@ -49,10 +50,10 @@ const AdminWomanSaloon = ({ category }) => {
       };
       const resp = await axios.post("http://localhost:3000/salons", dat);
       debugger
-      if(resp?.data?.newSalon?.id){
-          e.target.reset();
-          getSaloon()
-          alert("Saloon added")
+      if (resp?.data?.newSalon?.id) {
+        e.target.reset();
+        getSaloon()
+        alert("Saloon added")
 
 
       }
@@ -60,6 +61,7 @@ const AdminWomanSaloon = ({ category }) => {
 
     }
   };
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
       <header className="fixed fixed-top">
@@ -125,8 +127,17 @@ const AdminWomanSaloon = ({ category }) => {
                   <td>0321-0001112</td>
                   <td>{x.description}</td>
                   <td>
-                    <button className="sal-edit-btn">Edit </button>
-                    <button className="sal-remove-btn">Remove</button>
+                    <button className='sal-edit-btn' onClick={() => setIsOpen(true)}>Edit </button>
+                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                      <form>
+                        <input type='text' class="form-control mb-2" id='sal-name' name='sal-name' placeholder='Salon Name' />
+                        <input type='text' class="form-control mb-2" id='sal-address' name='sal-address' placeholder='Salon Address' />
+                        <input type='number' class="form-control mb-2" id='sal-phone' name='sal-phone' placeholder='Salon Phone' />
+                        <input type='text' class="form-control mb-2" id='sal-description' name='sal-description' placeholder='Salon Description' />
+                        <button type="submit" class="btn sal-service-update-btn">Update</button>
+                      </form>
+                    </Modal>
+                    <button className='sal-remove-btn'>Remove</button>
                   </td>
                 </tr>
               ))}

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import Modal from '../Modal';
 import "./salon_owner.css";
 import logoo from '../../images/icon.png';
 import { useParams, Link } from 'react-router-dom';
 
 
 const salon_services = () => {
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <>
             <header className="fixed fixed-top">
@@ -45,7 +47,7 @@ const salon_services = () => {
 
             <div className='container mt-5'>
                 <h1 className='orange pt-5 text-center'>Salon Services</h1>
-                <div className='mt-3   '>
+                <div className='mt-3 mb-5'>
                     <h4>Add Service</h4>
                     <form className='add-service-form'>
                         <input type="text" className="form-input"  name="serviceName" required placeholder="Enter Service Name..."/>
@@ -73,7 +75,15 @@ const salon_services = () => {
                                 <td>Simple Hair Cut by our professional barber</td>
                                 <td>Rs.<span> 100</span></td>
                                 <td>
-                                    <button className='edit-btn'>Edit </button>
+                                    <button className='edit-btn' onClick={()=>setIsOpen(true)}>Edit </button>
+                                        <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
+                                            <form>
+                                                <input type='text' class="form-control mb-2" id='sal-service-name' name='sal-service-name' placeholder='Service Name'/>
+                                                <input type='text' class="form-control mb-2" id='sal-service-description' name='sal-service-description' placeholder='Service Description'/>
+                                                <input type='number' class="form-control mb-2" id='sal-service-price' name='sal-service-price' placeholder='Service Price'/>
+                                                <button type="submit" class="btn sal-service-update-btn">Update</button>
+                                            </form>
+                                        </Modal>
                                     <button className='delete-btn'> Delete</button>
                                 </td>
                             </tr>

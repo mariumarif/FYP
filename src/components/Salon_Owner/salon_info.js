@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Modal from '../Modal';
 import "./salon_owner.css";
 import logoo from '../../images/icon.png';
 import mansal from '../../images/men-salon-2.jpg'
@@ -6,6 +7,7 @@ import { useParams, Link } from 'react-router-dom';
 
 
 const salon_info = () => {
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <>
         <header className="fixed fixed-top">
@@ -43,7 +45,7 @@ const salon_info = () => {
                 </div>
         </header>
 
-            <div className='container mt-5 pt-5'>
+            <div className='container mt-5 pt-5 mb-5 pb-5'>
             <h1 className='orange text-center'>Salon Details</h1>
                 <div className='mt-4'>
                 <table>
@@ -88,6 +90,19 @@ const salon_info = () => {
                             </tr>
                         </tbody>
                     </table>
+                    <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
+                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                        <form>
+                            <input type='text' class="form-control mb-2" id='salonName' name='salonName' placeholder='Salon Name' />
+                            <input type='text' class="form-control mb-2" id='salonAddress' name='salonAddress' placeholder='Salon Address' />
+                            <input type='number' class="form-control mb-2" id='salonPhone' name='salonPhone' placeholder='Salon Phone' />
+                            <input type='text' class="form-control mb-2" id='salonDescription' name='salonDescription' placeholder='Salon Description' />
+                            <label for="salonImage">Update Image:</label>&nbsp;
+                            <input type="file" id="salonImage" name="salonImage" />
+                            
+                            <button type="submit" class="btn sal-service-update-btn">Update</button>
+                        </form>
+                    </Modal>
                 </div>
 
 

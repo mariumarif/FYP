@@ -55,6 +55,8 @@ const salon_orders = () => {
                                 <th className='th3'>Service Details</th>
                                 <th className='th3'>Special Instructions</th>
                                 <th className='th3'>Total Amount</th>
+                                <th className='th3'>Date</th>
+                                <th className='th3'>Time</th>
                                 <th className='th4'>Action</th>
                             </tr>
                         </thead>
@@ -66,13 +68,15 @@ const salon_orders = () => {
                                 <td>Hair Cut, Facial, Beard Trimming</td>
                                 <td>Please wear mask</td>
                                 <td>800</td>
+                                <td>31-01-22</td>
+                                <td>14:26</td>
                                 <td>
                                     <button className='completed-btn'>Completed </button>
                                     <button className='cancel-btn'> Cancel</button>
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>    
                 </div>
             </div>
 
