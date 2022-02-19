@@ -5,7 +5,7 @@ import logoo from '../../images/icon.png';
 import { useParams, Link } from 'react-router-dom';
 
 
-const salon_services = () => {
+const SalonService = () => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
@@ -20,7 +20,7 @@ const salon_services = () => {
 
                             </a>
                         </Link>
-                        
+
                         <div className='navbar-btns'>
                             {/* <!-- Login/Signup --> */}
                             <div className='login-signup mr-2'>
@@ -51,11 +51,11 @@ const salon_services = () => {
                     <h4>Add Service</h4>
                     <form className='add-service-form'>
                         <input type="text" className="form-input"  name="serviceName" required placeholder="Enter Service Name..."/>
-                        
+
                         <input type="text" className="form-input"  name="serviceDescription" required placeholder="Enter Service Details"/>
-                        
+
                         <input type="number" className="form-input"  name="servicePrice" required  placeholder="Enter Price" />
-                        
+
                         <button type="submit" className='add-service-btn'>Add</button>
                     </form>
                 </div>
@@ -91,10 +91,10 @@ const salon_services = () => {
                     </table>
                 </div>
 
-                
+
             </div>
 
         </>
     )
 };
-export default salon_services;
+export default SalonService;

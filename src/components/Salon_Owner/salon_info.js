@@ -6,7 +6,7 @@ import mansal from '../../images/men-salon-2.jpg'
 import { useParams, Link } from 'react-router-dom';
 
 
-const salon_info = () => {
+const SalonInfo = () => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
@@ -163,7 +163,7 @@ const salon_info = () => {
                 {/* <div className='container mt-5'>
                     <div className='row'>
                         <h5>Salon Name:</h5>
-                        <p className='para'>The Barber Shop</p> 
+                        <p className='para'>The Barber Shop</p>
                         <button className='sal-update-btn'>Update</button>
                     </div>
                     <hr />
@@ -197,4 +197,4 @@ const salon_info = () => {
         </>
     );
 };
-export default salon_info;
+export default SalonInfo;

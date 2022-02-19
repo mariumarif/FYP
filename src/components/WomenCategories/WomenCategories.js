@@ -31,11 +31,11 @@ const WomenCategories = () => {
         <>
             <h1 className='text-center orange px-5 py-5 d-flex justify-content-center align-items-center'>WOMEN CATEGORIES</h1>
             {
-                users.map((user) => {     
+                users.map((user) => {
                     return (
                         <>
                             <div className='container' key={user.id}>
-                                <Link to={`/womansalon/:id=${user.id}`} className="salon-div">
+                                <Link to={`/womansalon/${user.id}`} className="salon-div">
                                 <div className='row d-flex justify-content-center align-items-center salon-categoryy mb-4'>
                                     <div className='col-lg-4 mb-4'>
                                         <img src={mencat2} className='men-salon-1' className='img-fluid' />

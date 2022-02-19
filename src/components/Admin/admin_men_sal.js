@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import logoo from '../../images/icon.png';
 import Modal from '../Modal';
 import "./admin.css";
-import logoo from '../../images/icon.png';
-import { useParams, Link } from 'react-router-dom';
 
 
-const admin_men_sal = () => {
+const AdminMenSalon = () => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
@@ -53,7 +53,7 @@ const admin_men_sal = () => {
                         <button type="submit" className='search-salon-btn'>Search</button>
                     </form>
                 </div>
-                
+
                 <div className='mt-4'>
                 <table className='mensal-table'>
                         <thead>
@@ -106,9 +106,9 @@ const admin_men_sal = () => {
                         <button type="submit" className='add-salon-btn'>Add</button>
                     </form>
                 </div>
-                
+
             </div>
         </>
     );
 };
-export default admin_men_sal;   
+export default AdminMenSalon;

@@ -43,7 +43,7 @@ const AdminWomanSaloon = ({ category }) => {
         salon: { ...saloonData, category_id: category },
         user: {
           name: "fjs skfsdk",
-          email: "ali2aa2@gmail.com",
+          email: "ali2agfgfgj444444khkkjgfgffga2@gmail.com",
           password: "12345",
           user_type: 3,
         },
