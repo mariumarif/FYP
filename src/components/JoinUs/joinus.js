@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "./joinus.css";
+import './joinus.css'
 import logoo from "../../images/icon.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import background1 from '../../images/mencategory.jpg';
 
 const JoinUs = () => {
   const [data, setData] = useState({
@@ -54,7 +55,7 @@ const JoinUs = () => {
               {/* <!-- Login/Signup --> */}
               <div className="login-signup mr-2">
                 <Link to="./login">
-                  <button className="btn login-signup-btn px-4 py-2 mt-3">
+                  <button className="btn login-signup-btn px-4 py-2 mt-2">
                     Login/Signup
                   </button>
                 </Link>
@@ -63,55 +64,60 @@ const JoinUs = () => {
           </nav>
         </div>
       </header>
+      <div class="main-divv d-flex " style={{ backgroundImage: `url(${background1})` }}>
 
       <br />
       <div className="container salon-registration-form">
-        <h1 className="register-heading text-center mt-5">Registraton Form</h1>
-
         <form className="reg-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label for="name">Salon Name:</label>
+        <h1 className="register-heading text-center pt-3 pb-2">Registraton <span className='orange'> Form</span></h1>
+          <div className="form-group mb-1">
+            <label for="name" className="mb-0">Salon Name:</label>
             <input
               type="text"
               className="form-control"
               id="name"
               required
+              placeholder="Enter Salon Name"
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label for="email">Email address:</label>
+          <div className="form-group mb-1">
+            <label for="email" className="mb-0">Email address:</label>
             <input
               type="email"
               className="form-control"
               id="email"
               required
+              placeholder="Salon Email Address"
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label for="pwd">Password:</label>
+          <div className="form-group mb-1">
+            <label for="pwd" className="mb-0">Password:</label>
             <input
               type="password"
               className="form-control"
               id="pwd"
               required
+              placeholder="Enter Password"
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label for="salonphone">Phone:</label>
+          <div className="form-group mb-1">
+            <label for="salonphone" className="mb-0">Phone:</label>
             <input
               type="number"
               className="form-control"
               id="salonphone"
               required
+              placeholder="Salon Phone"
               onChange={handleChange}
             />
           </div>
-          <div className="dropdown form-group">
+          <div className="dropdown form-group mb-1">
+          <label for="saloncat" className="mb-0">Salon Category:</label>
             <select
-              className="form-select sal-drpdown"
+              className="form-select sal-drpdown form-control"
               aria-label="Default select example"
               id="category_id"
               onChange={handleChange}
@@ -121,18 +127,19 @@ const JoinUs = () => {
               <option value={2}>Woman</option>
             </select>
           </div>
-          <div className="form-group">
-            <label for="name">Salon Address:</label>
+          <div className="form-group mb-1">
+            <label for="name" className="mb-0">Salon Address:</label>
             <input
               type="text"
               className="form-control"
               id="address"
               required
+              placeholder="Enter Salon Address"
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label for="salonImage">Salon Image:</label>
+          <div className="form-group mb-1">
+            <label for="salonImage" className="mb-0">Salon Image:</label>
             <br />
             <input type="file" id="salonImage" name="salonImage" />
           </div>
@@ -146,6 +153,7 @@ const JoinUs = () => {
             </button>
           </div>
         </form>
+      </div>
       </div>
     </>
   );

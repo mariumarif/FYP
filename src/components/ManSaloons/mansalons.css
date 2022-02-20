@@ -98,8 +98,6 @@
 }
 .sal-card{
     width: 48%;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
 }
 .btn-add-to-cart{
     background-color: #f68d2f !important;
@@ -147,6 +145,7 @@
 .fa-heart{
     color: red;
 }
+
 
 @media only screen and (max-width: 876px){
     .card{

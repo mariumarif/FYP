@@ -7,9 +7,9 @@ import { Link, useParams } from 'react-router-dom';
 let cartArray = [];
 
 const ManSalons = () => {
-    const {id}=useParams();
+    const { id } = useParams();
     console.log(id);
-   
+
     const [cartItems, setCartItems] = useState([]);
     const handleId = (e) => {
         // console.log(e.target.id);
@@ -62,8 +62,8 @@ const ManSalons = () => {
     useEffect(() => {
         getSalons();
     }, []);
-    
-    
+
+
 
 
     return (
@@ -74,24 +74,17 @@ const ManSalons = () => {
                 <div className="navbar-div">
                     <nav class="navbar navbar-light">
                         {/* <!-- Brand --> */}
-                        <a class="navbar-brand" href="#">
-                            <img src={icon} alt="" />
-                            {/* <!-- Salon.PK --> */}
-                        </a>
-
-                        {/* <!-- Login/Signup --> */}
-
-
-                        <div>
-                            <Link></Link>
-                            <a href="" className="login-signup">
-                                <u> Login/SignUp</u>
-                                <i className="fa fa-user-circle"></i>
+                        <Link to="./">
+                            <a className="navbar-brand ml-5" href="#">
+                                <img src={icon} alt="" />
                             </a>
-                            <Link to='/Cart'>
-                                <i className='fa fa-shopping-cart'></i>
-                            </Link>
-                        </div>
+                        </Link>
+                        <Link className='cart-link' to='/Cart'>
+                            <div class="cart-icon">
+                                <i className="fa fa-shopping-cart"></i>
+                                <p className="total-items">0</p>
+                            </div>
+                        </Link>
 
                     </nav>
                 </div>
@@ -103,30 +96,31 @@ const ManSalons = () => {
                 <img class="salon-main-img" src={tbs} alt="Salon" />
                 <div class="container salon-title">
                     {
-                            salons.map((salon) => {
-                                // const { }=user;  
-                                return(
-                    <>
-                        <h1 class="salon-title">{salon.name}</h1>
-                        <div class="container-fluid">
-                        {/* <p class="salon-category">Men's Salon<span class="salon-info">Salon Information</span></p> */}
-                        <p class="salon-category">{salon.description}<span class="salon-info">Salon Information</span></p>
-                        <p class="salon-location"><b>Address:</b> {salon.address}<span class="rating"><i
-                            class="fa fa-star"></i><b>4.4/5</b>(435)</span></p>
-                            <p><span class="salon-info">Timings: {salon.timings}</span></p>
-                    </div>
-                    <div class="container">
-                        <button type="button" class="btn info-btn"><i class="fa fa-location-arrow"
-                        ></i>&nbsp; Directions</button>
-                        <button type="button" class="btn info-btn"><i class="fa fa-comments"></i>&nbsp;
-                            Reviews</button>
-                        <button type="button" class="btn info-btn"><i class="fa fa-share-square"
-                        ></i>&nbsp; Share</button>
-                        <button type="button" class="btn info-btn"><i class="fa fa-heart"></i>&nbsp; Add To
-                            Favourites</button>
-                    </div>
-                    </>)})
-}
+                        salons.map((salon) => {
+                            // const { }=user;  
+                            return (
+                                <>
+                                    <h1 class="salon-title">{salon.name}</h1>
+                                    <div class="container-fluid">
+                                        {/* <p class="salon-category">Men's Salon<span class="salon-info">Salon Information</span></p> */}
+                                        <p class="salon-category">{salon.description}<span class="salon-info">Salon Information</span></p>
+                                        <p class="salon-location"><b>Address:</b> {salon.address}<span class="rating"><i
+                                            class="fa fa-star"></i><b>4.4/5</b>(435)</span></p>
+                                        <p><span class="salon-info">Timings: {salon.timings}</span></p>
+                                    </div>
+                                    <div class="container">
+                                        <button type="button" class="btn info-btn"><i class="fa fa-location-arrow"
+                                        ></i>&nbsp; Directions</button>
+                                        <button type="button" class="btn info-btn"><i class="fa fa-comments"></i>&nbsp;
+                                            Reviews</button>
+                                        <button type="button" class="btn info-btn"><i class="fa fa-share-square"
+                                        ></i>&nbsp; Share</button>
+                                        <button type="button" class="btn info-btn"><i class="fa fa-heart"></i>&nbsp; Add To
+                                            Favourites</button>
+                                    </div>
+                                </>)
+                        })
+                    }
                 </div>
 
                 <div className="breaker"></div>
@@ -207,7 +201,7 @@ const ManSalons = () => {
 
                                         <div className="container">
                                             <div className="row">
-                                                <div className="sal-card card">
+                                                <div className="sal-card card col-6">
                                                     <div className="card-body">
                                                         <h5 className="card-title">{service.name}</h5>
                                                         <p className="card-text">{service.description}
@@ -215,6 +209,16 @@ const ManSalons = () => {
                                                         {/* <h4>Rs.{service.charges}/-<button className="btn btn-add-to-cart" id={service.id} onClick={handleId(service)}>+ Add To Cart</button></h4> */}
                                                         <h4>Rs.{service.charges}/-<button className="btn btn-add-to-cart" id={service.id} onClick={handleId}>+ Add To Cart</button></h4>
 
+                                                    </div>
+                                                    <div className="sal-card card col-6">
+                                                        {/* <!-- <img src="..." className="card-img-top" alt="..."> --> */}
+                                                        <div className="card-body">
+                                                            <h5 className="card-title">Baby Hair Cut</h5>
+                                                            <p className="card-text">Professional Hair Cut with extra care for small babies and new borns
+                                                            </p>
+                                                            <h4>Rs.149/-<a href="#" className="btn btn-add-to-cart" id="07" onClick={handleId}>+ Add To Cart</a></h4>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -236,16 +240,7 @@ const ManSalons = () => {
                         <h2>Hair Cuts</h2>
                         <div className="container">
                             <div className="row">
-                                <div className="sal-card card">
-                                    {/* <!-- <img src="..." className="card-img-top" alt="..."> --> */}
-                                    <div className="card-body">
-                                        <h5 className="card-title">Baby Hair Cut</h5>
-                                        <p className="card-text">Professional Hair Cut with extra care for small babies and new borns
-                                        </p>
-                                        <h4>Rs.149/-<a href="#" className="btn btn-add-to-cart" id="07" onClick={handleId}>+ Add To Cart</a></h4>
 
-                                    </div>
-                                </div>
                                 <div className="sal-card card">
                                     {/* <!-- <img src="..." className="card-img-top" alt="..."> --> */}
                                     <div className="card-body">

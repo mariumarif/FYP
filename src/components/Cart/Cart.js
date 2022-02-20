@@ -100,10 +100,10 @@ const removeCart=(id)=>{
                 <img src={logoo} alt="" />
               </a>
             </Link>
-            <Link className="cart-link" to="/Cart">
+            <Link className='cart-link' to='/Cart'>
               <div class="cart-icon">
                 <i className="fa fa-shopping-cart"></i>
-                <p className="total-items">7</p>
+                <p className="total-items">0</p>
               </div>
             </Link>
           </nav>

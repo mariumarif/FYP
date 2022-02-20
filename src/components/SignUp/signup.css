@@ -1,3 +1,4 @@
+
 .form-control{
     background-color: #f6f5f4;
     border-radius:15px;
@@ -13,12 +14,14 @@
      background-color:#f68d2f; 
      margin-top: 10px !important;
       color:white; 
-      font-size:20px; 
-      margin-top:10px;
   }
   .sign-up{
-    background-color:rgb(252, 247, 247);box-shadow: rgb(148, 148, 148); width:400px; border-radius:30px; text-align:center; margin-top: 100px;
+    background-color:rgb(252, 247, 247);
+    box-shadow: rgb(148, 148, 148);
+    width:400px;
+    height: 440px;
+    border-radius:30px; 
+    text-align:center; 
+    margin-top: 7.5rem;
   }
-  .form-control{
-      padding-bottom: 20px !important;
-  }
+  

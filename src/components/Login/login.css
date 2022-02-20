@@ -1,9 +1,19 @@
- .login{
-    background-color:rgb(252, 247, 247);box-shadow: rgb(148, 148, 148); height:450px; width:400px; border-radius:30px; text-align:center; 
-    margin-top: 100px;
+.main-div{
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+.login{
+    background-color:rgb(252, 247, 247);
+    box-shadow: rgb(148, 148, 148);
+    height:450px;
+     width:400px; 
+     border-radius:30px; text-align:center; 
+    margin-top: 7.5rem;
 }
 .signin-heading{
-    text-align:center; padding-top:30px; color:#f68d2f;
+    text-align:center; padding-top:30px; 
 }
 .login-btn{
     background-color: #f68d2f;

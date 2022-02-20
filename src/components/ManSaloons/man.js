@@ -69,25 +69,17 @@ const ManSalons = () => {
                 <div className="navbar-div">
                     <nav class="navbar navbar-light">
                         {/* <!-- Brand --> */}
-                        <a class="navbar-brand" href="#">
-                            <img src={icon} alt="" />
-                            {/* <!-- Salon.PK --> */}
-                        </a>
-
-                        {/* <!-- Login/Signup --> */}
-
-
-                        <div>
-                            <Link></Link>
-                            <a href="" className="login-signup">
-                                <u> Login/SignUp</u>
-                                <i className="fa fa-user-circle"></i>
+                        <Link to="./">
+                            <a className="navbar-brand ml-5" href="#">
+                                <img src={icon} alt="" />
                             </a>
-                            <Link to='/Cart'>
-                                <i className='fa fa-shopping-cart'></i>
-                            </Link>
-                        </div>
-
+                        </Link>
+                        <Link className='cart-link' to='/Cart'>
+                            <div class="cart-icon">
+                                <i className="fa fa-shopping-cart"></i>
+                                <p className="total-items">0</p>
+                            </div>
+                        </Link>
                     </nav>
                 </div>
             </header>

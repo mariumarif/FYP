@@ -1,17 +1,18 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './signup.css';
 import logoo from '../../images/icon.png';
 import { Link } from 'react-router-dom';
+import background1 from '../../images/mencategory.jpg';
 
 const SignUp = () => {
-  const [name,setName]=useState("");
-  const [email,setEmail]=useState("");
-  const [password,setPassword]=useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // const [emailError, setEmailError] = useState('')
   // const validateEmail = (e) => {
   //   var email = e.target.value
-  
+
   //   if (validator.isEmail(email)) {
   //     setEmailError('Valid Email :)')
   //   } else {
@@ -19,24 +20,24 @@ const SignUp = () => {
   //   }
   // }
 
-  function saveUser(){
+  function saveUser() {
     // console.log(name,email,password);
-    let data={name,email,password};
+    let data = { name, email, password };
     // if()
-    fetch("http://localhost:3000/user",{
-      method:"POST",
-      headers:{
-        'Accept':'application/json',
-        'Content-Type':'application/json'
+    fetch("http://localhost:3000/user", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body:JSON.stringify(data)
-    }).then((result)=>{
-      console.log("result",result);
-   
+      body: JSON.stringify(data)
+    }).then((result) => {
+      console.log("result", result);
+
     })
-    alert("User has been created!")  
-    }
-    
+    alert("User has been created!")
+  }
+
   //   const validate = (values) => {
   //   const errors = {};
   //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -60,7 +61,7 @@ const SignUp = () => {
   //   return errors;
   // };
 
-    return (
+  return (
     <>
 
       <header className="fixed fixed-top">
@@ -97,22 +98,29 @@ const SignUp = () => {
 
 
       {/* <!-- Sign up --> */}
-      <div className="container col-md-offset-4 sign-up pt-4 ">
-        <h1 className='pb-2'>Sign Up</h1>
+      <div class="main-div d-flex " style={{ backgroundImage: `url(${background1})` }}>
+        <div className="container col-md-offset-4 sign-up pt-4 ">
+          <h1 className='pb-2'>Sign <span className='orange'>Up</span></h1>
+          <form onSubmit={saveUser}>
+            <div className="col-sm-12  mt-3 text-left">
 
-        <div className="col-sm-12">
-          <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} className="form-control mb-3" id="name" placeholder="Name" name="name" autoComplete='off'/>
-        </div>
-        <div className="col-sm-12">
-          <input type="email" value={email} onChange={(e)=>{setEmail(e.target.value)}} className="form-control mb-3" id="email" placeholder="Email" name="email" autoComplete='off'/>
-        </div> 
-        <div className="col-sm-12">
-          <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} className="form-control mb-3" id="password" placeholder="Password" name="password" autoComplete='off'/>
-        </div>
+              <label>Name:</label>
+              <input type="text" required='required' value={name} onChange={(e) => { setName(e.target.value) }} className="form-control mb-3" id="name" placeholder="Name" name="name" autoComplete='off' />
+            </div>
+            <div className="col-sm-12 text-left">
+              <label>Email:</label>
+              <input type="email" required='required' value={email} onChange={(e) => { setEmail(e.target.value) }} className="form-control mb-3" id="email" placeholder="Email" name="email" autoComplete='off' />
+            </div>
+            <div className="col-sm-12 text-left">
+              <label>Password:</label>
+              <input type="password" required='required' value={password} onChange={(e) => { setPassword(e.target.value) }} className="form-control mb-3" id="password" placeholder="Password" name="password" autoComplete='off' />
+            </div>
 
-        <div className="col-sm-12">
-          <button className="col-md-4 col-md-offset-4 btn submit-btn mb-3" onClick={saveUser} type="submit"> Submit
-          </button>
+            <div className="col-sm-12">
+              <button className="col-md-4 col-md-offset-4 btn submit-btn " type="submit"> Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </>

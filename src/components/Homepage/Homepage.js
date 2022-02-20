@@ -9,6 +9,9 @@ import mencat from '../../images/mencat.jpg';
 import safe from '../../images/safe.png';
 import moreabout from '../../images/moreabout.jpg';
 import mancatt from '../../images/mancatt.jpg';
+import background1 from '../../images/mencategory.jpg';
+import background2 from '../../images/womencat.png';
+
 import {
     BrowserRouter as Router,
     Switch, Route, Link,useParams
@@ -96,7 +99,7 @@ const Homepage = () => {
 
             {/* MORE ABOUT */}
             <div className="container-fluid">
-                <h1 className='text-center py-3 orange'>MORE ABOUT SALON.PK</h1>
+                <h1 className='text-center py-3'>MORE ABOUT<span className='orange'> SALON.PK </span></h1>
                 <div className="row">
                     <div className="col-lg-6 col-12">
                         <img src={mancatt} className='img-fluid' style={{ height: '400px' }} />
@@ -146,7 +149,7 @@ const Homepage = () => {
 
             {/* SECTION-2 */}
             <div className="container p-5">
-                <h1 className='text-center py-5 orange'>SALON.PK BENEFITS</h1>
+                <h1 className='text-center py-5'>SALON.PK <span className='orange'> BENEFITS</span></h1>
 
                 <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
                     <div className="col mb-1">
@@ -230,14 +233,14 @@ const Homepage = () => {
             <div className='container'>
                 <div className='row text-center'>
                     <div className='col-10 mx-auto py-5'>
-                        <h1 className='orange'>SALON CATEGORIES</h1>
+                        <h1>SALON <span className='orange'> CATEGORIES</span></h1>
                         <p className='text-center mb-2'>Which salon category would you like to choose further?</p>
                     </div>
                 </div>
                 <div className='row mb-5'>
                     <div className='col-lg-6 col-sm-12 cardimg'>
                         <Link to="/mencategories">
-                            <h1 className='mycard'>
+                            <h1 className='mycard men-cat-card'  style={{ backgroundImage: `url(${background1})` }}>
                                 MEN
                             </h1>
                         </Link>
@@ -245,7 +248,9 @@ const Homepage = () => {
 
                     <div className='col-lg-6 col-sm-12'>
                     <Link to='./womencategories'>
-                        <h1 className='text-center mycard'>WOMEN</h1>
+                        <h1 className='text-center mycard women-cat-card' style={{ backgroundImage: `url(${background1})` }}>
+                            WOMEN
+                        </h1>
                     </Link>
                     </div>
                 </div>
@@ -259,7 +264,7 @@ const Homepage = () => {
                     <section className='section-faq mt-5'>
                         <div className="row">
                             <div className="col-12">
-                                <h1 className="orange pb-5 text-center pt-5">FREQUENTLY ASKED QUESTIONS</h1>
+                                <h1 className="pb-5 text-center pt-5" >FREQUENTLY ASKED <span className='orange'> QUESTIONS</span></h1>
                             </div>
                             <div className="col-10 mx-auto">
                                 <div className="accordion" id="accordionExample">
@@ -334,7 +339,7 @@ const Homepage = () => {
 
 
             <div className='container'>
-                <h1 className='text-center py-5 mt-5 orange'>WHAT PEOPLE SAY ABOUT SALON.PK</h1>
+                <h1 className='text-center py-5 mt-5'>WHAT PEOPLE SAY ABOUT  <span className='orange'> SALON.PK</span></h1>
             </div>
             <div className="container-fluid test-con">
                 <div id="demo" className="carousel slide" data-ride="carousel">
