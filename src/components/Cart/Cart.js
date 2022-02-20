@@ -16,6 +16,7 @@ const bookingFields = {
   // appointment_at: "",
   discount: 0,
   services: [],
+  time:"00:00"
 };
 const Cart = () => {
   const [services, setServices] = useState([]);
@@ -34,11 +35,15 @@ const Cart = () => {
     // console.log(data);
   };
   const handleBookAppointment = async () => {
-    const { services, ...appointment } = bookingData;
+    const { services,time,appointment_at, ...appointment } = bookingData;
+    const hr=time.split(":")[0]
+    const min=time.split(":")[1]
+    let app_at=appointment_at.setHours(+hr)
+    app_at=new Date(app_at).setMinutes(+min)
     try {
       const resp = await axios.post("http://localhost:3000/appointment", {
         services,
-        appointment,
+        appointment:{...appointment,appointment_at:app_at},
       });
       if (resp?.data?.id) {
           const{total_amount,...bf}=bookingFields
@@ -81,6 +86,7 @@ const Cart = () => {
   }, [storedNames, services]);
   const handleChange = (e) => {
     const { name, value } = e.target;
+    debugger
     setBookingData((prev) => ({ ...prev, [name]: value }));
   };
 const removeCart=(id)=>{
@@ -229,7 +235,7 @@ const removeCart=(id)=>{
               <input type="date" required
                 className="form-control"
                 id="date"
-                name="date"
+                name="appointment_at"
                 value={bookingData.appointment_at}
                 onChange={handleChange}/>
             </div>
