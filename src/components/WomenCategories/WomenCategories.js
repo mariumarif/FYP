@@ -53,7 +53,7 @@ const WomenCategories = () => {
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star"></span>
-                                            <Link to="/mansalons">
+                                            <Link to={`/womansalon/${user.id}`}>
                                                 <i id={user.id} class="fa fa-arrow-right men-arrow" onClick="getId()"></i>
                                             </Link>
                                         </p>
