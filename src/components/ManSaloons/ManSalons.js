@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import tbs from '../../images/TBS.jpg';
+import tbs from '../../images/header-img.jpg';
 import './mansalons.css';
 import icon from '../../images/icon.png';
 import { Link, useParams } from 'react-router-dom';

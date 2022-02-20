@@ -12,7 +12,8 @@ const bookingFields = {
   message: "",
   total_amount: "",
   appointment_place: "",
-  appointment_at: +new Date(),
+  appointment_at: new Date(),
+  // appointment_at: "",
   discount: 0,
   services: [],
 };
@@ -139,7 +140,7 @@ const removeCart=(id)=>{
                                                         </p> */}
                           <h4>Rs.{service.charges}/-</h4>
                           {/* <button className="btn btn-add-to-cart" id={service.id}>+ Add To Cart</button> */}
-                          <button className="btn btn-sm btn-danger" onClick={()=>removeCart(service.id)}>
+                          <button className="btn btn-sm btn-danger rem-cart-btn" onClick={()=>removeCart(service.id)}>
                             Remove From cart
                           </button>
                         </div>
@@ -221,6 +222,26 @@ const removeCart=(id)=>{
                   </option>
                 </select>
               </div>
+            </div>
+
+            <div className="col-sm-12 pt-4 text-left form-sets">
+              <label for="date">Date:</label>
+              <input type="date" required
+                className="form-control"
+                id="date"
+                name="date"
+                value={bookingData.appointment_at}
+                onChange={handleChange}/>
+            </div>
+
+            <div className="col-sm-12 pt-4 text-left form-sets">
+              <label for="time">Time:</label>
+              <input type="time" required
+                className="form-control"
+                id="time"
+                name="time"
+                // value={bookingData.appointment_at}
+                onChange={handleChange}/>
             </div>
 
             <div className="col-sm-12 pt-4 text-left form-sets">

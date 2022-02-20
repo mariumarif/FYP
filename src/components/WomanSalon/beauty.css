@@ -41,7 +41,7 @@
   background-color: white;
 }
 .salon-main-img{
-  height: 300px;
+  height: 500px;
   width: 100%;
 }
 .salon-title{
@@ -56,7 +56,9 @@
 .rating{
   float: right;
 }
-
+.rem-cart-btn{
+  background-color: #f68d2f;
+}
 .info-btn{
   border: 1px solid grey !important;
   color: gray !important;
@@ -97,9 +99,11 @@
   margin-left: 2rem;
 }
 .sal-card{
+
   width: 48%;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  display: inline-flex;
 }
 .btn-add-to-cart{
   background-color: #f68d2f !important;
@@ -111,7 +115,11 @@
 }
 
 
-
+@media only screen and (max-width: 900px) {
+  .sal-card{
+    width: 100% !important;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .navbar-brand>img{

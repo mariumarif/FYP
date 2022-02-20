@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import tbs from "../../images/TBS.jpg";
+import tbs from "../../images/header-img.jpg";
 import "./beauty.css";
 import icon from "../../images/icon.png";
 import { Link, useParams, useLocation } from "react-router-dom";
@@ -50,7 +50,7 @@ const WomanSalon = () => {
       `http://localhost:3000/services?id=${+id}`
     );
 
-    debugger;
+    // debugger;
     response?.data && setServices(response?.data);
     // console.log(data);
   };
@@ -67,7 +67,7 @@ const WomanSalon = () => {
     if (response?.data?.length) {
       const sal = response.data.find((x) => x.id === +id);
       setSalons(sal);
-      debugger;
+      // debugger;
     }
     //     // console.log(data);
   };
@@ -101,7 +101,7 @@ const WomanSalon = () => {
       {/* <!-- Saloon Image & Description--> */}
 
       <div class="div1">
-        <img class="salon-main-img" src={tbs} alt="Salon" />
+        <img class="w-img img-fluid" src={tbs} alt="Salon" />
         <div class="container salon-title">
           <>
             <h1 class="salon-title">{salon?.name}</h1>
@@ -138,8 +138,6 @@ const WomanSalon = () => {
             </div>
           </>
         </div>
-
-        {/* <!-- About Us --> */}
 
         {/* <!-- Services --> */}
         <div className="container">
@@ -216,8 +214,7 @@ const WomanSalon = () => {
               // const { }=user;
               return (
                 <>
-                  <div className="container">
-                    <div className="row">
+                  
                       <div className="sal-card card">
                         <div className="card-body">
                           <h5 className="card-title">{service.name}</h5>
@@ -234,15 +231,12 @@ const WomanSalon = () => {
                           </h4>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    
+                  
                 </>
               );
             })}
           </div>
-          {/* <div className="container" id="deals">
-
-                </div> */}
 
           {/* <!-- Hair Cut --> */}
           <div className="container" id="hair-cuts">
@@ -250,7 +244,6 @@ const WomanSalon = () => {
             <div className="container">
               <div className="row">
                 <div className="sal-card card">
-                  {/* <!-- <img src="..." className="card-img-top" alt="..."> --> */}
                   <div className="card-body">
                     <h5 className="card-title">Baby Hair Cut</h5>
                     <p className="card-text">
