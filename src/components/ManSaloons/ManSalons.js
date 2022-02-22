@@ -82,7 +82,7 @@ const ManSalons = () => {
                         <Link className='cart-link' to='/Cart'>
                             <div class="cart-icon">
                                 <i className="fa fa-shopping-cart"></i>
-                                <p className="total-items">0</p>
+                                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray')).length}</p>
                             </div>
                         </Link>
 

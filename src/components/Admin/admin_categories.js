@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./admin.css";
 import logoo from '../../images/icon.png';
 import { useParams, Link } from 'react-router-dom';
+import background1 from '../../images/mencategory.jpg';
 
 
 const admin_categories = () => {
@@ -49,7 +50,7 @@ const admin_categories = () => {
                 <div className='row mb-5'>
                     <div className='col-lg-6 col-sm-12 cardimg'>
                         <Link to="/admin_men_sal">
-                            <h1 className='mycard'>
+                            <h1 className='mycard  men-cat-card' style={{ backgroundImage: `url(${background1})` }}>
                                 MEN
                             </h1>
                         </Link>
@@ -57,7 +58,7 @@ const admin_categories = () => {
 
                     <div className='col-lg-6 col-sm-12'>
                     <Link to='./admin_women_sal'>
-                        <h1 className='text-center mycard'>WOMEN</h1>
+                        <h1 className='text-center mycard women-cat-card'style={{ backgroundImage: `url(${background1})` }}>WOMEN</h1>
                     </Link>
                     </div>
                 </div>

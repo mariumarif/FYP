@@ -10,8 +10,11 @@ import safe from '../../images/safe.png';
 import moreabout from '../../images/moreabout.jpg';
 import mancatt from '../../images/mancatt.jpg';
 import background1 from '../../images/mencategory.jpg';
-import background2 from '../../images/womencat.png';
-
+import nowaiting from '../../images/nowait.png';
+import noneedtogo from '../../images/dontgo.png';
+import discount from '../../images/disount.png';
+import stayupdated from '../../images/stayupdated.png';
+import barbershopbgimg from '../../images/barberbg.png'
 import {
     BrowserRouter as Router,
     Switch, Route, Link,useParams
@@ -67,7 +70,7 @@ const Homepage = () => {
                 <div className='container-fluid nav_bg'>
                     <div className='row'>
                         <div className='col-10 mx-auto'>
-                            <div className='row'>
+                            <div className='row mt-5 mb-5'>
                                 <div className='col-md-6 pt-5 pt-lg-0 pt-md-0 pt-sm-0 order-2 order-lg-1 d-flex justify-content-center flex-column'>
                                     <h1>Grow your business with <strong className='brand-name'> Salon.Pk </strong></h1>
                                     <p className='my-3'>
@@ -98,20 +101,21 @@ const Homepage = () => {
             </section>
 
             {/* MORE ABOUT */}
-            <div className="container-fluid">
-                <h1 className='text-center py-3'>MORE ABOUT<span className='orange'> SALON.PK </span></h1>
+            <div className="container-fluid barberbg pt-4 pb-5" style={{ backgroundImage: `url(${barbershopbgimg})` }}>
+                <h1 className='text-center py-3 mb-5'>MORE ABOUT<span className='orange'> SALON.PK </span></h1>
                 <div className="row">
-                    <div className="col-lg-6 col-12">
-                        <img src={mancatt} className='img-fluid' style={{ height: '400px' }} />
-                    </div>
-                    <div className="col-lg-6 col-12">
-                        <p>
+                    <div className="col-lg-6 col-12 m-auto ">
+                        {/* <img src={mancatt} className='img-fluid' style={{ height: '400px' }} /> */}
+                        <p className='pl-5 pr-5'>
                             Salon.Pk provides a full range of on-demand 'Home Salon Services' plus 'Salon services' for both men and women.
                             Our expert beauticians are trained to create a salon-like environment right in your home
                             so you can pamper and take time for yourself with Salon.Pk salon service. Absolutely, free of
                             hassle and save your time.ALso it books your appointment online to provide the hustle of waiting and you
                             can just go and get your services done directly.
                         </p>
+                    </div>
+                    <div className="col-lg-6 col-12">
+                        
 
                         <div className="xts-icon-content">
                             <div>
@@ -156,7 +160,7 @@ const Homepage = () => {
                         <div className="card h-100 shadow-sm card-services card-benefits">
                             <div className="text-center">
                                 <div className="img-hover-zoom img-hover-zoom--colorize">
-                                    <img className="shadow" src={face}
+                                    <img className="shadow" src={nowaiting}
                                         alt="Another zoom-on-hover effect" />
                                 </div>
                             </div>
@@ -175,7 +179,7 @@ const Homepage = () => {
                         <div className="card h-100 shadow-sm card-benefits">
                             <div className="text-center">
                                 <div className="img-hover-zoom img-hover-zoom--colorize">
-                                    <img className="shadow" src={face}
+                                    <img className="shadow" src={noneedtogo}
                                         alt="Another Image zoom-on-hover effect" />
                                 </div>
                             </div>
@@ -183,7 +187,7 @@ const Homepage = () => {
                                 <div className="clearfix mb-3">
                                 </div>
                                 <div className="mb-3">
-                                    <h2 className="text-uppercase text-center role">SEO Specialist</h2>
+                                    <h2 className="text-uppercase text-center role">No need to go to Salon. Book Home Appointment Now. </h2>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +196,7 @@ const Homepage = () => {
                         <div className="card h-100 shadow-sm card-benefits">
                             <div className="text-center">
                                 <div className="img-hover-zoom img-hover-zoom--colorize">
-                                    <img className="shadow" src={face}
+                                    <img className="shadow" src={discount}
                                         alt="Another Image zoom-on-hover effect" />
                                 </div>
                             </div>
@@ -202,7 +206,7 @@ const Homepage = () => {
 
                                 </div>
                                 <div className="mb-3">
-                                    <h2 className="text-uppercase text-center role">DIGITAL MARKETING SPECIALIST</h2>
+                                    <h2 className="text-uppercase text-center role">Save Money <br /> Get Huge Discounts</h2>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +215,7 @@ const Homepage = () => {
                         <div className="card h-100 shadow-sm card-benefits">
                             <div className="text-center">
                                 <div className="img-hover-zoom img-hover-zoom--colorize">
-                                    <img className="shadow" src={face}
+                                    <img className="shadow" src={stayupdated}
                                         alt="" />
                                 </div>
                             </div>
@@ -221,7 +225,7 @@ const Homepage = () => {
 
                                 </div>
                                 <div className="mb-3">
-                                    <h2 className="text-uppercase text-center role">Web Developer</h2>
+                                    <h2 className="text-uppercase text-center role">Get Updated By the Nearby Top Salons</h2>
                                 </div>
                             </div>
                         </div>

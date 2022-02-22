@@ -38,12 +38,12 @@ const Cart = () => {
     const { services,time,appointment_at, ...appointment } = bookingData;
     const hr=time.split(":")[0]
     const min=time.split(":")[1]
-    let app_at=appointment_at.setHours(+hr)
+    let app_at=new Date(appointment_at).setHours(+hr)
     app_at=new Date(app_at).setMinutes(+min)
     try {
       const resp = await axios.post("http://localhost:3000/appointment", {
         services,
-        appointment:{...appointment,appointment_at:app_at},
+        appointment:{...appointment,appointment_at:+ new Date(app_at)},
       });
       if (resp?.data?.id) {
           const{total_amount,...bf}=bookingFields
@@ -110,7 +110,7 @@ const removeCart=(id)=>{
             <Link className='cart-link' to='/Cart'>
               <div class="cart-icon">
                 <i className="fa fa-shopping-cart"></i>
-                <p className="total-items">0</p>
+                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray')).length}</p>
               </div>
             </Link>
           </nav>
