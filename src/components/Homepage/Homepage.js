@@ -15,6 +15,8 @@ import noneedtogo from '../../images/dontgo.png';
 import discount from '../../images/disount.png';
 import stayupdated from '../../images/stayupdated.png';
 import barbershopbgimg from '../../images/barberbg.png'
+import background2 from '../../images/bg2.jpg';
+
 import {
     BrowserRouter as Router,
     Switch, Route, Link,useParams
@@ -263,7 +265,7 @@ const Homepage = () => {
 
             {/* SECTION-4 */}
             {/* <!-- Accordion --> */}
-            <div className="container-fluid bg-gray" id="accordion-style-1">
+            <div className="container-fluid bg-gray bg-img-2" id="accordion-style-1"  style={{ backgroundImage: `url(${background2})` }}>
                 <div className="container">
                     <section className='section-faq mt-5'>
                         <div className="row">

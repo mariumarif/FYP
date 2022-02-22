@@ -1,11 +1,113 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import logoo from '../../images/icon.png';
+import React, { useEffect, useState } from 'react';
 import Modal from '../Modal';
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
+import logoo from '../../images/icon.png';
 import "./admin.css";
 
+const data = {
+    name: "",
+    address: "",
+    contact: "",
+    description: "",
+};
 
-const AdminMenSalon = () => {
+const AdminMenSalon = ({ category }) => {
+
+    const [saloons, setSaloons] = useState([]);
+    const [saloonData, setSaloonData] = useState({ ...data });
+    const [modalData, setModalData] = useState(null);
+    /*
+      category for men will be 1 and for woman it will be 2
+      */
+    const getSaloon = async () => {
+        try {
+            const resp = await axios.get(
+                `http://localhost:3000/salons?id=${category}`
+            );
+            resp?.data && setSaloons(resp?.data);
+            debugger;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    useEffect(() => {
+        getSaloon();
+    }, []);
+
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+        setSaloonData((prev) => ({ ...prev, [name]: value }));
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const dat = {
+                salon: { ...saloonData, category_id: category },
+                user: {
+                    name: "fjs skfsdk",
+                    email: "alia@gmail.com",
+                    password: "12345",
+                    user_type: 3,
+                },
+            };
+            const resp = await axios.post("http://localhost:3000/salons", dat);
+            debugger
+            if (resp?.data?.newSalon?.id) {
+                e.target.reset();
+                getSaloon()
+                alert("Saloon added")
+
+
+            }
+        } catch (error) {
+
+        }
+    };
+
+    const handleDelete = async (id) => {
+        console.log(id)
+        try {
+            const resp = await axios.delete("http://localhost:3000/salons", { data: { id } });
+            getSaloon();
+        } catch (error) {
+
+        }
+    };
+
+    const handleModalDataChange = (e) => {
+        const { name, value } = e.target;
+        setModalData(prev => ({ ...prev, [name]: value }))
+    }
+    const handleUpdate = async (e) => {
+        const { id, ...dat } = modalData;
+        try {
+            // const dat = {
+            //   salon: { ...saloonData, category_id: category },
+            //   user: {
+            //     name: "fjs skfsdk",
+            //     email: "huda@gmail.com",
+            //     password: "12345",
+            //     user_type: 3,
+            //   },
+            // };
+            const resp = await axios.put("http://localhost:3000/salons",
+                {
+                    id,
+                    change: dat
+
+                });
+            debugger
+            if (resp?.data?.updatedSalon?.id) {
+                getSaloon();
+                setModalData(null);
+            }
+        } catch (error) {
+
+        }
+    };
+
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
@@ -46,16 +148,16 @@ const AdminMenSalon = () => {
 
             <div className='container mt-5 pt-5'>
                 <h1 className='orange text-center'>Men Salons</h1>
-                <div>
+                {/* <div>
                     <form className='search-salon-form mt-5'>
                         <label>Search Salon: &nbsp;</label>
                         <input type='text' placeholder='Enter Salon Name'/>
                         <button type="submit" className='search-salon-btn'>Search</button>
                     </form>
-                </div>
+                </div> */}
 
                 <div className='mt-4'>
-                <table className='mensal-table'>
+                    <table className='mensal-table'>
                         <thead>
                             <tr>
                                 <th className='th1'>Salon Name</th>
@@ -66,46 +168,78 @@ const AdminMenSalon = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>The Barber Shop</td>
-                                <td>Gulshan block 1</td>
-                                <td>0321-0001112</td>
-                                <td>Best in Hair Cutting and Trimming Since 1990</td>
-                                <td>
-                                    <button className='sal-edit-btn' onClick={()=>setIsOpen(true)}>Edit </button>
-                                        <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
-                                            <form>
-                                                <input type='text' class="form-control mb-2" id='sal-name' name='sal-name' placeholder='Salon Name'/>
-                                                <input type='text' class="form-control mb-2" id='sal-address' name='sal-address' placeholder='Salon Address'/>
-                                                <input type='number' class="form-control mb-2" id='sal-phone' name='sal-phone' placeholder='Salon Phone'/>
-                                                <input type='text' class="form-control mb-2" id='sal-description' name='sal-description' placeholder='Salon Description'/>
-                                                <button type="submit" class="btn sal-service-update-btn">Update</button>
-                                            </form>
+                            {saloons.map((x) => (
+                                <tr key={x.id}>
+                                    <td>{x.name}</td>
+                                    <td>{x.address}</td>
+                                    <td>{x.contact}</td>
+                                    <td>{x.description}</td>
+                                    <td>
+                                        <button className='sal-edit-btn' onClick={() => setModalData(x)}>Edit </button>
+                                        <Modal open={modalData} onClose={() => setModalData(null)}>
+
+                                            <input type='text' class="form-control mb-2" id='sal-name' name='name' placeholder='Salon Name' value={modalData?.name} onChange={handleModalDataChange} />
+                                            <input type='text' class="form-control mb-2" id='sal-address' name='address' placeholder='Salon Address' value={modalData?.address} onChange={handleModalDataChange} />
+                                            <input type='number' class="form-control mb-2" id='sal-phone' name='contact' placeholder='Salon Phone' />
+                                            <input type='text' class="form-control mb-2" id='sal-description' name='description' placeholder='Salon Description' value={modalData?.description} onChange={handleModalDataChange} />
+                                            <button type="submit" class="btn sal-service-update-btn" onClick={handleUpdate}>Update</button>
                                         </Modal>
-                                    <button className='sal-remove-btn'>Remove</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                        <button className='sal-remove-btn' onClick={() => handleDelete(x.id)}>Remove</button>
+                                    </td>
+                                </tr>
+                         ))}
+                         </tbody>
+                       </table>
                 </div>
-                <div className='mt-3 mb-2'>
-                    <h4>Add Salon</h4>
-                    <form className='add-salon-form mb-3'>
-                        <input type="text" className="form-input mb-4" name="serviceName" required placeholder="Salon Name" />
 
-                        <input type="text" className="form-input" name="serviceDescription" required placeholder="Salon Address" />
+                <div className="mt-3 mb-2">
+          <h4>Add Salon</h4>
+          <form className="add-salon-form mb-3" onSubmit={handleSubmit}>
+            <input
+              onChange={handleChange}
+              type="text"
+              className="form-input mb-4"
+              name="name"
+              required
+              placeholder="Salon Name"
+            />
 
-                        <input type="number" className="form-input" name="servicePrice" required placeholder="Salon Phone Number" />
+            <input
+              onChange={handleChange}
+              type="text"
+              className="form-input"
+              name="address"
+              required
+              placeholder="Salon Address"
+            />
 
-                        <input type="text" className="form-input" name="serviceDescription" required placeholder="Salon Description" />
+            <input
+              onChange={handleChange}
+              type="number"
+              className="form-input"
+              name="contact"
+              required
+              placeholder="Salon Phone Number"
+            />
 
-                        <span className='sal-img-span'>
-                            <label>Upload Image: &nbsp;</label>
-                            <input type="file" id="salon_image" name="salon_image"></input>
-                        </span>
-                        <button type="submit" className='add-salon-btn'>Add</button>
-                    </form>
-                </div>
+            <input
+              onChange={handleChange}
+              type="text"
+              className="form-input"
+              name="description"
+              required
+              placeholder="Salon Description"
+            />
+
+            <span className="sal-img-span">
+              <label>Upload Image: &nbsp;</label>
+              <input type="file" id="salon_image" name="salon_image"></input>
+            </span>
+            <button type="submit" className="add-salon-btn">
+              Add
+            </button>
+          </form>
+        </div>
 
             </div>
         </>

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AdminCategories from "./components/Admin/admin_categories";
 import AdminWomenSalon from "./components/Admin/admin_women_sal";
+import AdminMenSalon from "./components/Admin/admin_men_sal"
 import NewSalonRequest from "./components/Admin/new_salon_requests";
 import AdminRoute from "./components/AdminRoute/AdminRoute";
 import BookAppointment from "./components/BookAppointment/BookAppointment";
@@ -46,7 +47,7 @@ function App() {
           <AdminRoute path="/admin_categories" component={AdminCategories} />
           <AdminRoute
             path="/admin_men_sal"
-            component={(props) => <AdminWomenSalon {...props} category={1} />}
+            component={(props) => <AdminMenSalon {...props} category={1} />}
           />
           <AdminRoute
             path="/admin_women_sal"

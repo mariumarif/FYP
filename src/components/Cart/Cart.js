@@ -5,13 +5,13 @@ import logoo from "../../images/icon.png";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 const bookingFields = {
-  salon_id: 1,
+  salon_id: JSON.parse(localStorage.getItem("salonId")),
   user_id: 1,
   address: "",
   phoneNumber: "",
   message: "",
   total_amount: "",
-  appointment_place: "",
+  appointment_place: "goatsalon",
   appointment_at: new Date(),
   // appointment_at: "",
   discount: 0,
