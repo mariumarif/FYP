@@ -35,7 +35,8 @@ const JoinUs = () => {
         }
       const resp = await axios.post(" http://localhost:3000/salons",{user,salon:{...d}});
         if(resp.status===201){
-            alert("Created")
+            alert("Created");
+            e.target.reset();
         }
 
     } catch (error) {}

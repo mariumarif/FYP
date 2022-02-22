@@ -2,12 +2,52 @@ import React, { useEffect, useState } from 'react';
 import Modal from '../Modal';
 import "./salon_owner.css";
 import logoo from '../../images/icon.png';
-import mansal from '../../images/men-salon-2.jpg'
+import mansal from '../../images/men-salon-2.jpg';
 import { useParams, Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 const SalonInfo = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [salon, setSalon] = useState({});
+    const id = 1;
+    const fetchSalon = async () => {
+        try {
+            const resp = await axios.get(
+                `http://localhost:3000/salons?id=${id}`
+            );
+            resp?.data && setSalon(resp?.data?.[0]);
+            debugger;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    useEffect(() => {
+        fetchSalon();
+    }, []);
+
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+        setSalon((prev) => ({ ...prev, [name]: value }));
+
+      };
+
+
+    const handleUpdate = async (e) => {
+
+        const { id, ...dat } = salon;
+        try {
+          const resp = await axios.put("http://localhost:3000/salons",
+            {
+              id,
+              change: dat
+            });
+          fetchSalon();
+          setIsOpen(false);
+        } catch (error) {
+    
+        }
+      };
+
     return (
         <>
             <header className="fixed fixed-top">
@@ -16,9 +56,7 @@ const SalonInfo = () => {
                         {/* <!-- Brand --> */}
                         <Link to='./'>
                             <a className="navbar-brand ml-5" href="">
-
                                 <img src={logoo} alt="" />
-
                             </a>
                         </Link>
 
@@ -50,149 +88,41 @@ const SalonInfo = () => {
                 <div className='mt-4'>
                     <table>
                         <tbody>
-                            {/* <tr>
-                                <th colspan="3"></th>
-                            </tr> */}
                             <tr>
                                 <th>Salon Name:</th>
-                                <td>The Barber Shop</td>
-                                <td>
-                                    <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
-                                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                                        <form>
-                                            <input type='text' class="form-control mb-2" id='salonName' name='salonName' placeholder='Salon Name' />
-                                            <input type='text' class="form-control mb-2" id='salonAddress' name='salonAddress' placeholder='Salon Address' />
-                                            <input type='number' class="form-control mb-2" id='salonPhone' name='salonPhone' placeholder='Salon Phone' />
-                                            <input type='text' class="form-control mb-2" id='salonDescription' name='salonDescription' placeholder='Salon Description' />
-                                            <label for="salonImage">Update Image:</label>&nbsp;
-                                            <input type="file" id="salonImage" name="salonImage" />
-                                            <button type="submit" class="btn sal-service-update-btn">Update</button>
-                                        </form>
-                                    </Modal>                                </td>
+                                <td>{salon.name}</td>
                             </tr>
                             <tr>
                                 <th>Salon Address:</th>
-                                <td>Shop#2, The Barber Shop, Gulshan Chorangi, Karachi</td>
-                                <td>
-                                    <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
-                                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                                        <form>
-                                            <input type='text' class="form-control mb-2" id='salonName' name='salonName' placeholder='Salon Name' />
-                                            <input type='text' class="form-control mb-2" id='salonAddress' name='salonAddress' placeholder='Salon Address' />
-                                            <input type='number' class="form-control mb-2" id='salonPhone' name='salonPhone' placeholder='Salon Phone' />
-                                            <input type='text' class="form-control mb-2" id='salonDescription' name='salonDescription' placeholder='Salon Description' />
-                                            <label for="salonImage">Update Image:</label>&nbsp;
-                                            <input type="file" id="salonImage" name="salonImage" />
-                                            <button type="submit" class="btn sal-service-update-btn">Update</button>
-                                        </form>
-                                    </Modal>                                </td>
+                                <td>{salon.address}</td>
                             </tr>
                             <tr>
                                 <th>Salon Phone Number:</th>
-                                <td>(+92) 300-111-1234</td>
-                                <td>
-                                    <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
-                                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                                        <form>
-                                            <input type='text' class="form-control mb-2" id='salonName' name='salonName' placeholder='Salon Name' />
-                                            <input type='text' class="form-control mb-2" id='salonAddress' name='salonAddress' placeholder='Salon Address' />
-                                            <input type='number' class="form-control mb-2" id='salonPhone' name='salonPhone' placeholder='Salon Phone' />
-                                            <input type='text' class="form-control mb-2" id='salonDescription' name='salonDescription' placeholder='Salon Description' />
-                                            <label for="salonImage">Update Image:</label>&nbsp;
-                                            <input type="file" id="salonImage" name="salonImage" />
-                                            <button type="submit" class="btn sal-service-update-btn">Update</button>
-                                        </form>
-                                    </Modal>                                </td>
+                                <td>{salon.contact}</td>
                             </tr>
                             <tr>
                                 <th>Salon Description:</th>
-                                <td>The Barber Shop, Best Hair Dressers, Certified by CPK Pakistan</td>
-                                <td>
-                                    <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
-                                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                                        <form>
-                                            <input type='text' class="form-control mb-2" id='salonName' name='salonName' placeholder='Salon Name' />
-                                            <input type='text' class="form-control mb-2" id='salonAddress' name='salonAddress' placeholder='Salon Address' />
-                                            <input type='number' class="form-control mb-2" id='salonPhone' name='salonPhone' placeholder='Salon Phone' />
-                                            <input type='text' class="form-control mb-2" id='salonDescription' name='salonDescription' placeholder='Salon Description' />
-                                            <label for="salonImage">Update Image:</label>&nbsp;
-                                            <input type="file" id="salonImage" name="salonImage" />
-                                            <button type="submit" class="btn sal-service-update-btn">Update</button>
-                                        </form>
-                                    </Modal>
-                                </td>
+                                <td>{salon.description}</td>
                             </tr>
                             <tr>
                                 <th>Salon Image:</th>
                                 <td><img src={mansal} alt='' width={500} height={300} /></td>
-                                <td>
-                                    <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
-                                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                                        <form>
-                                            <input type='text' class="form-control mb-2" id='salonName' name='salonName' placeholder='Salon Name' />
-                                            <input type='text' class="form-control mb-2" id='salonAddress' name='salonAddress' placeholder='Salon Address' />
-                                            <input type='number' class="form-control mb-2" id='salonPhone' name='salonPhone' placeholder='Salon Phone' />
-                                            <input type='text' class="form-control mb-2" id='salonDescription' name='salonDescription' placeholder='Salon Description' />
-                                            <label for="salonImage">Update Image:</label>&nbsp;
-                                            <input type="file" id="salonImage" name="salonImage" />
-                                            <button type="submit" class="btn sal-service-update-btn">Update</button>
-                                        </form>
-                                    </Modal>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    {/* <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
+                    <button className='sal-update-btn' onClick={() => setIsOpen(true)}>Update</button>
                     <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                        <form>
-                            <input type='text' class="form-control mb-2" id='salonName' name='salonName' placeholder='Salon Name' />
-                            <input type='text' class="form-control mb-2" id='salonAddress' name='salonAddress' placeholder='Salon Address' />
-                            <input type='number' class="form-control mb-2" id='salonPhone' name='salonPhone' placeholder='Salon Phone' />
-                            <input type='text' class="form-control mb-2" id='salonDescription' name='salonDescription' placeholder='Salon Description' />
+                       
+                            <input type='text' class="form-control mb-2" id='salonName' name='name' placeholder='Salon Name' value={salon.name} onChange={handleChange} />
+                            <input type='text' class="form-control mb-2" id='salonAddress' name='address' placeholder='Salon Address' value={salon.address} onChange={handleChange} />
+                            <input type='number' class="form-control mb-2" id='salonPhone' name='contact' placeholder='Salon Phone' value={salon.contact} onChange={handleChange} />
+                            <input type='text' class="form-control mb-2" id='salonDescription' name='description' placeholder='Salon Description' value={salon.description} onChange={handleChange} />
                             <label for="salonImage">Update Image:</label>&nbsp;
                             <input type="file" id="salonImage" name="salonImage" />
-                            <button type="submit" class="btn sal-service-update-btn">Update</button>
-                        </form>
-                    </Modal> */}
+                            <button type="submit" class="btn sal-service-update-btn" onClick={handleUpdate}>Update</button>
+                        
+                    </Modal>
                 </div>
-
-
-
-
-
-                {/* <div className='container mt-5'>
-                    <div className='row'>
-                        <h5>Salon Name:</h5>
-                        <p className='para'>The Barber Shop</p>
-                        <button className='sal-update-btn'>Update</button>
-                    </div>
-                    <hr />
-                    <div className='row'>
-                        <h5>Salon Address:</h5>
-                        <p className='para'>Shop#2, The Barber Shop, Gulshan Chorangi, Karachi</p>
-                        <button className='sal-update-btn'>Update</button>
-                    </div>
-                    <hr />
-                    <div className='row'>
-                        <h5>Salon Phone Number:</h5>
-                        <p className='para'>(+92) 300-111-1234</p>
-                        <button className='sal-update-btn'>Update</button>
-                    </div>
-                    <hr />
-                    <div className='row'>
-                        <h5>Salon Description:</h5>
-                        <p className='para'>The Barber Shop, Best Hair Dressers, Certified by CPK Pakistan</p>
-                        <button className='sal-update-btn'>Update</button>
-                    </div>
-                    <hr />
-                    <div className='row mt-4 mb-5'>
-                        <h5>SalonImage:</h5>
-                        <img src={mansal} alt='' width={300} height={200}  className='mt-1 ml-1'/>
-                        <button className='sal-update-btn'>Update</button>
-                    </div>
-                </div> */}
-
-
             </div>
         </>
     );

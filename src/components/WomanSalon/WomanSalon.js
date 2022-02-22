@@ -10,6 +10,11 @@ const WomanSalon = () => {
   const { id } = useParams();
   const { pathname } = useLocation();
   const category = pathname.includes("woman") ? 2 : 1;
+  const [x,setEx]=useState(true);
+  const [cartLength,setCartLength]=useState(0);
+  useEffect(()=>{
+    
+  },[]);
   // debugger
   useEffect(() => {
     localStorage.setItem("salonId", id);
@@ -17,32 +22,10 @@ const WomanSalon = () => {
 
   const [cartItems, setCartItems] = useState([]);
   const handleId = (id) => {
-    // console.log(e.target.id);
     cartArray.push(id);
-    // let options = {
-    //     method: "POSt",body: [...cartArray]
-    // }
-    // fetch()URL, options
-    // console.log(cart);
     localStorage.setItem("cartArray", JSON.stringify(cartArray));
-    //         var storedNames = JSON.parse(localStorage.getItem("cart"));
-    // console.log(storedNames)
-    //console.log(e.currentTarget.id);
+    setEx(p=> !p);
   };
-
-  // ADD TO CART
-  // const [services, setServices] = useState([]);
-
-  // const getServices = async () => {
-  //     const response = await fetch('http://localhost:5000/services');
-  //     setServices(await response.json());
-
-  // }
-
-  // useEffect(() => {
-  //     getServices();
-  // }, []);
-  // ADD TO CART
 
   const [services, setServices] = useState([]);
   const getServices = async () => {
@@ -78,8 +61,6 @@ const WomanSalon = () => {
 
   return (
     <>
-      {/* <button id="yourID" onClick={handleId}>Button</button> */}
-      {/* <!-- Navbar --> */}
       <header className="fixed">
         <div className="navbar-div">
           <nav class="navbar navbar-light">

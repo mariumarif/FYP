@@ -80,15 +80,6 @@ const AdminWomanSaloon = ({ category }) => {
   const handleUpdate = async (e) => {
     const { id, ...dat } = modalData;
     try {
-      // const dat = {
-      //   salon: { ...saloonData, category_id: category },
-      //   user: {
-      //     name: "fjs skfsdk",
-      //     email: "huda@gmail.com",
-      //     password: "12345",
-      //     user_type: 3,
-      //   },
-      // };
       const resp = await axios.put("http://localhost:3000/salons",
         {
           id,
