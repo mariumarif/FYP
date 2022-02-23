@@ -18,7 +18,6 @@ const Login = () => {
     if (res?.data?.token) {
       localStorage.setItem('user', JSON.stringify(res?.data?.user?.[0]));
     }
-    // <Link to='./'></Link>
 
   }
   return (
@@ -50,7 +49,7 @@ const Login = () => {
       <div class="main-div d-flex " style={{ backgroundImage: `url(${background1})` }}>
         <div className="container col-md-offset-4 login">
           <h1 className='signin-heading'>Log <span className='orange'>In</span></h1>
-          <form onSubmit={loginUser} action='./'>
+          <form onSubmit={loginUser} action='./categories/Categories.js'>
             <div className="col-sm-12 mt-4 text-left">
               <label>Email:</label>
               <input type="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} id="email" placeholder="Email" name="email" required />
@@ -75,6 +74,22 @@ const Login = () => {
           </form>
         </div>
       </div>
+      {/* FOOTER */}
+      <div className='container-fluid footer'>
+                <div className='row'>
+                    <div className='col-lg-12 col-12 text-center py-5'>
+                        <h4>Connect with Salon.Pk</h4>
+                        <i className="fa fa-facebook fa-2x mr-3 mt-2" />
+                        <i className="fa fa-instagram fa-2x mr-3 mt-2" />
+                        <i className="fa fa-twitter mr-3 fa-2x mt-2" />
+
+                        <p className='mt-3'>+92 333 4890877</p>
+
+                        <p>info@gmail.com</p>
+                    </div>
+
+                </div>
+            </div>
     </>
   )
 };

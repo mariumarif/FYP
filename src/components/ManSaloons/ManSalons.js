@@ -474,6 +474,22 @@ const ManSalons = () => {
                 </div>
             </div>
             <div className="last"></div>
+            {/* FOOTER */}
+            <div className='container-fluid footer'>
+                <div className='row'>
+                    <div className='col-lg-12 col-12 text-center py-5'>
+                        <h4>Connect with Salon.Pk</h4>
+                        <i className="fa fa-facebook fa-2x mr-3 mt-2" />
+                        <i className="fa fa-instagram fa-2x mr-3 mt-2" />
+                        <i className="fa fa-twitter mr-3 fa-2x mt-2" />
+
+                        <p className='mt-3'>+92 333 4890877</p>
+
+                        <p>info@gmail.com</p>
+                    </div>
+
+                </div>
+            </div>
         </>
     )
 }

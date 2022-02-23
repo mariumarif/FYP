@@ -10,11 +10,11 @@ const WomanSalon = () => {
   const { id } = useParams();
   const { pathname } = useLocation();
   const category = pathname.includes("woman") ? 2 : 1;
-  const [x,setEx]=useState(true);
-  const [cartLength,setCartLength]=useState(0);
-  useEffect(()=>{
-    
-  },[]);
+  const [x, setEx] = useState(true);
+  const [cartLength, setCartLength] = useState(0);
+  useEffect(() => {
+
+  }, []);
   // debugger
   useEffect(() => {
     localStorage.setItem("salonId", id);
@@ -24,7 +24,7 @@ const WomanSalon = () => {
   const handleId = (id) => {
     cartArray.push(id);
     localStorage.setItem("cartArray", JSON.stringify(cartArray));
-    setEx(p=> !p);
+    setEx(p => !p);
   };
 
   const [services, setServices] = useState([]);
@@ -64,17 +64,17 @@ const WomanSalon = () => {
       <header className="fixed">
         <div className="navbar-div">
           <nav class="navbar navbar-light">
-          <Link to="./../">
-                            <a className="navbar-brand ml-5" href="#">
-                                <img src={icon} alt="" />
-                            </a>
-                        </Link>
-                        <Link className='cart-link' to='/Cart'>
-                            <div class="cart-icon">
-                                <i className="fa fa-shopping-cart"></i>
-                                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray')).length}</p>
-                            </div>
-                        </Link>
+            <Link to="./../">
+              <a className="navbar-brand ml-5" href="#">
+                <img src={icon} alt="" />
+              </a>
+            </Link>
+            <Link className='cart-link' to='/Cart'>
+              <div class="cart-icon">
+                <i className="fa fa-shopping-cart"></i>
+                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray')).length}</p>
+              </div>
+            </Link>
           </nav>
         </div>
       </header>
@@ -195,25 +195,25 @@ const WomanSalon = () => {
               // const { }=user;
               return (
                 <>
-                  
-                      <div className="sal-card card">
-                        <div className="card-body">
-                          <h5 className="card-title">{service.name}</h5>
-                          <p className="card-text">{service.description}</p>
-                          {/* <h4>Rs.{service.charges}/-<button className="btn btn-add-to-cart" id={service.id} onClick={handleId(service)}>+ Add To Cart</button></h4> */}
-                          <h4>
-                            Rs.{service.charges}/-
-                            <button
-                              className="btn btn-add-to-cart"
-                              onClick={() => handleId(service.id)}
-                            >
-                              + Add To Cart
-                            </button>
-                          </h4>
-                        </div>
-                      </div>
-                    
-                  
+
+                  <div className="sal-card card">
+                    <div className="card-body">
+                      <h5 className="card-title">{service.name}</h5>
+                      <p className="card-text">{service.description}</p>
+                      {/* <h4>Rs.{service.charges}/-<button className="btn btn-add-to-cart" id={service.id} onClick={handleId(service)}>+ Add To Cart</button></h4> */}
+                      <h4>
+                        Rs.{service.charges}/-
+                        <button
+                          className="btn btn-add-to-cart"
+                          onClick={() => handleId(service.id)}
+                        >
+                          + Add To Cart
+                        </button>
+                      </h4>
+                    </div>
+                  </div>
+
+
                 </>
               );
             })}
@@ -580,6 +580,22 @@ const WomanSalon = () => {
         </div>
       </div>
       <div className="last"></div>
+      {/* FOOTER */}
+      <div className='container-fluid footer'>
+        <div className='row'>
+          <div className='col-lg-12 col-12 text-center py-5'>
+            <h4>Connect with Salon.Pk</h4>
+            <i className="fa fa-facebook fa-2x mr-3 mt-2" />
+            <i className="fa fa-instagram fa-2x mr-3 mt-2" />
+            <i className="fa fa-twitter mr-3 fa-2x mt-2" />
+
+            <p className='mt-3'>+92 333 4890877</p>
+
+            <p>info@gmail.com</p>
+          </div>
+
+        </div>
+      </div>
     </>
   );
 };

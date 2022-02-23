@@ -7,6 +7,7 @@ import NewSalonRequest from "./components/Admin/new_salon_requests";
 import AdminRoute from "./components/AdminRoute/AdminRoute";
 import BookAppointment from "./components/BookAppointment/BookAppointment";
 import Cart from "./components/Cart/Cart";
+import Categories from "./components/categories/Categories";
 import Homepage from "./components/Homepage/Homepage";
 import JoinUs from "./components/JoinUs/joinus";
 import Login from "./components/Login/Login";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/Cart" component={Cart} />
           <Route path="/bookapp" component={BookAppointment} />
           <Route path="/joinus" component={JoinUs} />
+          <Route path="/categories" component={Categories} />
           <SalonRoute path="/salon_services" component={SalonServices} />
           <SalonRoute path="/salon_info" component={SalonInfo} />
           <SalonRoute path="/salon_orders" component={SalonOrders} />

@@ -16,14 +16,14 @@ const bookingFields = {
   // appointment_at: "",
   discount: 0,
   services: [],
-  time:"00:00"
+  time: "00:00"
 };
 const Cart = () => {
   const [services, setServices] = useState([]);
   const [storedNames, setStoredNames] = useState([]);
   const [cartData, setCartData] = useState([]);
   const [bookingData, setBookingData] = useState({ ...bookingFields });
-    const salonId=JSON.parse(localStorage.getItem("salonId"))
+  const salonId = JSON.parse(localStorage.getItem("salonId"))
 
   const getServices = async () => {
     //const response = await fetch('http://localhost:3000/services?id=1?salon_id'+"="+{id});
@@ -35,19 +35,19 @@ const Cart = () => {
     // console.log(data);
   };
   const handleBookAppointment = async () => {
-    const { services,time,appointment_at, ...appointment } = bookingData;
-    const hr=time.split(":")[0]
-    const min=time.split(":")[1]
-    let app_at=new Date(appointment_at).setHours(+hr)
-    app_at=new Date(app_at).setMinutes(+min)
+    const { services, time, appointment_at, ...appointment } = bookingData;
+    const hr = time.split(":")[0]
+    const min = time.split(":")[1]
+    let app_at = new Date(appointment_at).setHours(+hr)
+    app_at = new Date(app_at).setMinutes(+min)
     try {
       const resp = await axios.post("http://localhost:3000/appointment", {
         services,
-        appointment:{...appointment,appointment_at:+ new Date(app_at)},
+        appointment: { ...appointment, appointment_at: + new Date(app_at) },
       });
       if (resp?.data?.id) {
-          const{total_amount,...bf}=bookingFields
-        setBookingData(prev=>({...prev,...bf}));
+        const { total_amount, ...bf } = bookingFields
+        setBookingData(prev => ({ ...prev, ...bf }));
         alert("Appoinment Booked Successfuly");
       }
     } catch (error) {
@@ -89,13 +89,13 @@ const Cart = () => {
     debugger
     setBookingData((prev) => ({ ...prev, [name]: value }));
   };
-const removeCart=(id)=>{
+  const removeCart = (id) => {
     const storedNamesData = JSON.parse(localStorage.getItem("cartArray"));
-    const temp=storedNamesData.filter(x=>+x!==id)
-    localStorage.setItem("cartArray",JSON.stringify(temp));
+    const temp = storedNamesData.filter(x => +x !== id)
+    localStorage.setItem("cartArray", JSON.stringify(temp));
     debugger
     setStoredNames([...temp])
-}
+  }
   return (
     <>
       <header className="fixed fixed-top">
@@ -146,7 +146,7 @@ const removeCart=(id)=>{
                                                         </p> */}
                           <h4>Rs.{service.charges}/-</h4>
                           {/* <button className="btn btn-add-to-cart" id={service.id}>+ Add To Cart</button> */}
-                          <button className="btn btn-sm btn-danger rem-cart-btn" onClick={()=>removeCart(service.id)}>
+                          <button className="btn btn-sm btn-danger rem-cart-btn" onClick={() => removeCart(service.id)}>
                             Remove From cart
                           </button>
                         </div>
@@ -237,7 +237,7 @@ const removeCart=(id)=>{
                 id="date"
                 name="appointment_at"
                 value={bookingData.appointment_at}
-                onChange={handleChange}/>
+                onChange={handleChange} />
             </div>
 
             <div className="col-sm-12 pt-4 text-left form-sets">
@@ -247,7 +247,7 @@ const removeCart=(id)=>{
                 id="time"
                 name="time"
                 // value={bookingData.appointment_at}
-                onChange={handleChange}/>
+                onChange={handleChange} />
             </div>
 
             <div className="col-sm-12 pt-4 text-left form-sets">
@@ -284,6 +284,23 @@ const removeCart=(id)=>{
               </button>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="last"></div>
+      {/* FOOTER */}
+      <div className='container-fluid footer'>
+        <div className='row'>
+          <div className='col-lg-12 col-12 text-center py-5'>
+            <h4>Connect with Salon.Pk</h4>
+            <i className="fa fa-facebook fa-2x mr-3 mt-2" />
+            <i className="fa fa-instagram fa-2x mr-3 mt-2" />
+            <i className="fa fa-twitter mr-3 fa-2x mt-2" />
+
+            <p className='mt-3'>+92 333 4890877</p>
+
+            <p>info@gmail.com</p>
+          </div>
+
         </div>
       </div>
     </>

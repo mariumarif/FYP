@@ -84,12 +84,6 @@
     vertical-align:middle;
     margin-bottom:2rem;
 }
-.last{
-    height: 200px;
-    width: 100%;
-    margin-bottom: 200px;
-    background-color: white;
-}
 .container{
     max-width: 1250px !important ;
 }

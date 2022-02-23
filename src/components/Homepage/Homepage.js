@@ -15,6 +15,7 @@ import noneedtogo from '../../images/dontgo.png';
 import discount from '../../images/disount.png';
 import stayupdated from '../../images/stayupdated.png';
 import barbershopbgimg from '../../images/barberbg.png'
+import salonmainbg from '../../images/salonmainbackground.png';
 
 import {
     BrowserRouter as Router,
@@ -70,7 +71,13 @@ const Homepage = () => {
             <section id='header' className='d-flex align-items-center justify-content-lg-center mb-5'>
                 <div className='container-fluid nav_bg'>
                     <div className='row'>
-                        <div className='col-10 mx-auto'>
+                        <div className='col-12 mainbgimg' style={{ backgroundImage: `url(${salonmainbg})` }}>
+                            <div>
+                                <h1>Welcome To <span>Salon.pk</span></h1>
+                                <p><hr />Best Solution For All Your Salon Problems<hr /></p>
+                            </div>
+                        </div>
+                        <div className='col-11 mx-auto'>
                             <div className='row mt-5 mb-5'>
                                 <div className='col-md-6 pt-5 pt-lg-0 pt-md-0 pt-sm-0 order-2 order-lg-1 d-flex justify-content-center flex-column'>
                                     <h1>Grow your business with <strong className='brand-name'> Salon.Pk </strong></h1>
@@ -238,7 +245,9 @@ const Homepage = () => {
             <div className='container'>
                 <div className='row text-center'>
                     <div className='col-10 mx-auto py-5'>
-                        <h1>SALON <span className='orange'> CATEGORIES</span></h1>
+                        <Link to='./Categories/categories.js'> 
+                            <h1>SALON <span className='orange'> CATEGORIES</span></h1>
+                        </Link>
                         <p className='text-center mb-2'>Which salon category would you like to choose further?</p>
                     </div>
                 </div>
@@ -343,7 +352,7 @@ const Homepage = () => {
             
 
 
-            <div className='container'>
+            <div className=' what-pep-say-cont'>
                 <h1 className='text-center py-5 mt-5'>WHAT PEOPLE SAY ABOUT  <span className='orange'> SALON.PK</span></h1>
             </div>
             <div className="container-fluid test-con">
