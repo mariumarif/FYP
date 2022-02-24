@@ -3,8 +3,15 @@ import "./salon_owner.css";
 import logoo from "../../images/icon.png";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
+import useIsUser from '../../useUser';
+import logout from '../../handlers';
 
 const SalonOrders = () => {
+  const history = useHistory();
+  const [refresh, setRefresh] = useState(false);
+  const isUser = useIsUser();
+
   const [orders, setOrders] = useState([]);
   //TODO: You need to get Id from params or any other way
   const id = 1;
@@ -51,6 +58,16 @@ const SalonOrders = () => {
                     Salon Info
                   </button>
                 </Link>
+              </div>
+
+              <div className='login-signup mr-2'>
+                {!isUser ? <Link to='/login'>
+                  <button className='btn login-signup-btn px-4 py-2 mt-3'>
+                    Login/Signup
+                  </button>
+                </Link> : <button onClick={() => { logout(history); setRefresh(x => !x) }} className='btn login-signup-btn px-4 py-2 mt-3'>
+                Sign Out
+                </button>}
               </div>
             </div>
           </nav>

@@ -22,8 +22,15 @@ import {
     Switch, Route, Link,useParams
 } from 'react-router-dom';
 import test1 from '../../images/test-1-pic.png'
+import useIsUser from '../../useUser';
+import logout from '../../handlers';
+import { useHistory } from "react-router-dom";
 
 const Homepage = () => {
+    const history = useHistory();
+    const [refresh, setRefresh] = useState(false);
+    const isUser = useIsUser();
+
     const {id}=useParams();
     const [category, setCategory] = useState([]);
     const getCategory = async () => {
@@ -50,11 +57,13 @@ const Homepage = () => {
                         <div className='navbar-btns'>
                             {/* <!-- Login/Signup --> */}
                             <div className='login-signup mr-2'>
-                                <Link to='/login'>
+                                {!isUser?<Link to='/login'>
                                     <button className='btn login-signup-btn px-4 py-2 mt-3'>
                                         Login/Signup
                                     </button>
-                                </Link>
+                                </Link>:<button onClick={() => {logout(history);setRefresh(x => !x)}} className='btn login-signup-btn px-4 py-2 mt-3'>
+                                        Sign Out
+                                    </button>}
                             </div>
 
                             {/* <!-- Join Us --> */}

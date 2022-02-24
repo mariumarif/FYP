@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import SignUp from '../SignUp/SignUp';
 import axios from "axios"
 import background1 from '../../images/mencategory.jpg';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
   async function loginUser(e) {
     e.preventDefault();
     console.log(email, password);
@@ -16,9 +18,23 @@ const Login = () => {
     const res = await axios.post("http://localhost:3000/login", data)
     console.log({ res });
     if (res?.data?.token) {
-      localStorage.setItem('user', JSON.stringify(res?.data?.user?.[0]));
-    }
+      localStorage.setItem('user', JSON.stringify(res?.data?.user));
+      localStorage.setItem('salon', JSON.stringify(res?.data?.salon));
 
+      switch (res?.data?.user?.user_type) {
+        case 1:
+          history.push('/admin_categories')
+          break;
+        
+        case 3:
+          history.push('/salon_info');
+          break;
+      
+        default:
+          history.push('/')
+          break;
+      }
+    }
   }
   return (
     <>
@@ -61,7 +77,7 @@ const Login = () => {
 
 
             <div className="col-sm-12">
-              <button className="btn col-md-4 col-md-offset-4 btn login-btn mt-3" type="submit"> Submit
+              <button className="btn col-md-4 col-md-offset-4 btn login-btn mt-3" type="submit"> Log In
               </button>
             </div>
             <br></br>

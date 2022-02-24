@@ -8,8 +8,14 @@ import {
     BrowserRouter as Router,
     Switch, Route, Link, useParams
 } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import useIsUser from '../../useUser';
+import logout from '../../handlers';
 
 const MenCategories = () => {
+    const history = useHistory();
+    const [refresh, setRefresh] = useState(false);
+    const isUser = useIsUser();
 
     const [users, setUsers] = useState([]);
 
@@ -39,11 +45,18 @@ const MenCategories = () => {
                         {/* <!-- Brand --> */}
                         <Link to='./'>
                             <a className="navbar-brand ml-5" href="#">
-
                                 <img src={logoo} alt="" />
-
                             </a>
                         </Link>
+                        <div className='login-signup mr-2'>
+                            {!isUser ? <Link to='/login'>
+                                <button className='btn login-signup-btn px-4 py-2 mt-3'>
+                                    Login/Signup
+                                </button>
+                            </Link> : <button onClick={() => { logout(history); setRefresh(x => !x) }} className='btn login-signup-btn px-4 py-2 mt-3'>
+                            Sign Out
+                            </button>}
+                        </div>
                     </nav>
                 </div>
             </header>

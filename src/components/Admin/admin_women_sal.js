@@ -44,10 +44,10 @@ const AdminWomanSaloon = ({ category }) => {
         salon: { ...saloonData, category_id: category },
         user: {
           name: "fjs skfsdk",
-          email: "ali@gmail.com",
+          email: "yusra@gmail.com",
           password: "12345",
           user_type: 3,
-        },
+        },  
       };
       const resp = await axios.post("http://localhost:3000/salons", dat);
       debugger
@@ -110,13 +110,13 @@ const AdminWomanSaloon = ({ category }) => {
 
             <div className="navbar-btns">
               {/* <!-- Login/Signup --> */}
-              <div className="login-signup mr-2">
+              {/* <div className="login-signup mr-2">
                 <Link to="./new_salon_requests">
                   <button className="btn salon-services-btn px-4 py-2 mt-3">
                     New Salon Requets
                   </button>
                 </Link>
-              </div>
+              </div> */}
 
               <div className="join-btn my-3 mr-3">
                 <Link to="./admin_categories">

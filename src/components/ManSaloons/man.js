@@ -3,10 +3,17 @@ import tbs from '../../images/TBS.jpg';
 import './mansalons.css';
 import icon from '../../images/icon.png';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import useIsUser from '../../useUser';
+import logout from '../../handlers';
 
 let cartArray = [];
 
 const ManSalons = () => {
+
+    const history = useHistory();
+    const [refresh, setRefresh] = useState(false);
+    const isUser = useIsUser();
 
     const [cartItems, setCartItems] = useState([]);
     const handleId = (e) => {
@@ -60,7 +67,7 @@ const ManSalons = () => {
     useEffect(() => {
         getSalons();
     }, []);
-    
+
     return (
         <>
             {/* <button id="yourID" onClick={handleId}>Button</button> */}
@@ -80,6 +87,15 @@ const ManSalons = () => {
                                 <p className="total-items">{JSON.parse(localStorage.getItem('cartArray')).length}</p>
                             </div>
                         </Link>
+                        <div className='login-signup mr-2'>
+                            {!isUser ? <Link to='/login'>
+                                <button className='btn login-signup-btn px-4 py-2 mt-3'>
+                                    Login/Signup
+                                </button>
+                            </Link> : <button onClick={() => { logout(history); setRefresh(x => !x) }} className='btn login-signup-btn px-4 py-2 mt-3'>
+                            Sign Out
+                            </button>}
+                        </div>
                     </nav>
                 </div>
             </header>
@@ -90,30 +106,31 @@ const ManSalons = () => {
                 <img class="salon-main-img" src={tbs} alt="Salon" />
                 <div class="container salon-title">
                     {
-                            salons.map((salon) => {
-                                // const { }=user;  
-                                return(
-                    <>
-                        <h1 class="salon-title">{salon.name}</h1>
-                        <div class="container-fluid">
-                        {/* <p class="salon-category">Men's Salon<span class="salon-info">Salon Information</span></p> */}
-                        <p class="salon-category">{salon.description}<span class="salon-info">Salon Information</span></p>
-                        <p class="salon-location"><b>Address:</b> {salon.address}<span class="rating"><i
-                            class="fa fa-star"></i><b>4.4/5</b>(435)</span></p>
-                            <p><span class="salon-info">Timings: {salon.timings}</span></p>
-                    </div>
-                    <div class="container">
-                        <button type="button" class="btn info-btn"><i class="fa fa-location-arrow"
-                        ></i>&nbsp; Directions</button>
-                        <button type="button" class="btn info-btn"><i class="fa fa-comments"></i>&nbsp;
-                            Reviews</button>
-                        <button type="button" class="btn info-btn"><i class="fa fa-share-square"
-                        ></i>&nbsp; Share</button>
-                        <button type="button" class="btn info-btn"><i class="fa fa-heart"></i>&nbsp; Add To
-                            Favourites</button>
-                    </div>
-                    </>)})
-}
+                        salons.map((salon) => {
+                            // const { }=user;  
+                            return (
+                                <>
+                                    <h1 class="salon-title">{salon.name}</h1>
+                                    <div class="container-fluid">
+                                        {/* <p class="salon-category">Men's Salon<span class="salon-info">Salon Information</span></p> */}
+                                        <p class="salon-category">{salon.description}<span class="salon-info">Salon Information</span></p>
+                                        <p class="salon-location"><b>Address:</b> {salon.address}<span class="rating"><i
+                                            class="fa fa-star"></i><b>4.4/5</b>(435)</span></p>
+                                        <p><span class="salon-info">Timings: {salon.timings}</span></p>
+                                    </div>
+                                    <div class="container">
+                                        <button type="button" class="btn info-btn"><i class="fa fa-location-arrow"
+                                        ></i>&nbsp; Directions</button>
+                                        <button type="button" class="btn info-btn"><i class="fa fa-comments"></i>&nbsp;
+                                            Reviews</button>
+                                        <button type="button" class="btn info-btn"><i class="fa fa-share-square"
+                                        ></i>&nbsp; Share</button>
+                                        <button type="button" class="btn info-btn"><i class="fa fa-heart"></i>&nbsp; Add To
+                                            Favourites</button>
+                                    </div>
+                                </>)
+                        })
+                    }
                 </div>
 
                 <div className="breaker"></div>

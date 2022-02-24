@@ -47,7 +47,7 @@ const AdminMenSalon = ({ category }) => {
                 salon: { ...saloonData, category_id: category },
                 user: {
                     name: "fjs skfsdk",
-                    email: "alia@gmail.com",
+                    email: "aliza@gmail.com",
                     password: "12345",
                     user_type: 3,
                 },
@@ -125,13 +125,13 @@ const AdminMenSalon = ({ category }) => {
 
                         <div className='navbar-btns'>
                             {/* <!-- Login/Signup --> */}
-                            <div className='login-signup mr-2'>
+                            {/* <div className='login-signup mr-2'>
                                 <Link to='./new_salon_requests'>
                                     <button className='btn salon-services-btn px-4 py-2 mt-3'>
                                         New Salon Requets
                                     </button>
                                 </Link>
-                            </div>
+                            </div> */}
 
                             <div className='join-btn my-3 mr-3'>
                                 <Link to='./admin_categories'>
@@ -180,7 +180,7 @@ const AdminMenSalon = ({ category }) => {
 
                                             <input type='text' class="form-control mb-2" id='sal-name' name='name' placeholder='Salon Name' value={modalData?.name} onChange={handleModalDataChange} />
                                             <input type='text' class="form-control mb-2" id='sal-address' name='address' placeholder='Salon Address' value={modalData?.address} onChange={handleModalDataChange} />
-                                            <input type='number' class="form-control mb-2" id='sal-phone' name='contact' placeholder='Salon Phone' />
+                                            <input type='number' class="form-control mb-2" id='sal-phone' name='contact' placeholder='Salon Phone' value={modalData?.contact} onChange={handleModalDataChange} />
                                             <input type='text' class="form-control mb-2" id='sal-description' name='description' placeholder='Salon Description' value={modalData?.description} onChange={handleModalDataChange} />
                                             <button type="submit" class="btn sal-service-update-btn" onClick={handleUpdate}>Update</button>
                                         </Modal>

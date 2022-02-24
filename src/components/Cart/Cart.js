@@ -4,6 +4,10 @@ import "./Cart.css";
 import logoo from "../../images/icon.png";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import useIsUser from "../../useUser";
+import logout from "../../handlers";
+
 const bookingFields = {
   salon_id: JSON.parse(localStorage.getItem("salonId")),
   user_id: 1,
@@ -19,6 +23,10 @@ const bookingFields = {
   time: "00:00"
 };
 const Cart = () => {
+  const history = useHistory();
+  const [refresh, setRefresh] = useState(false);
+  const isUser = useIsUser();
+
   const [services, setServices] = useState([]);
   const [storedNames, setStoredNames] = useState([]);
   const [cartData, setCartData] = useState([]);
@@ -110,9 +118,19 @@ const Cart = () => {
             <Link className='cart-link' to='/Cart'>
               <div class="cart-icon">
                 <i className="fa fa-shopping-cart"></i>
-                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray')).length}</p>
+                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray'))?.length || 0}</p>
               </div>
             </Link>
+            {/* Log out */}
+            <div className='login-signup mr-2'>
+              {!isUser ? <Link to='/login'>
+                <button className='btn login-signup-btn px-4 py-2 mt-3'>
+                  Login/Signup
+                </button>
+              </Link> : <button onClick={() => { logout(history); setRefresh(x => !x) }} className='btn login-signup-btn px-4 py-2 mt-3'>
+                Sign Out
+              </button>}
+            </div>
           </nav>
         </div>
       </header>
@@ -134,7 +152,7 @@ const Cart = () => {
               // )))}
               // {
               //     {
-              if (storedNames.includes(service.id)) {
+              if (storedNames?.includes(service.id)) {
                 return (
                   <>
                     <div className="container">

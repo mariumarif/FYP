@@ -11,8 +11,8 @@ import { Redirect, Route } from "react-router-dom";
  */
 const SalonRoute = (props) => {
   var { component: Component, pathname, ...restProps } = props;
-  //   const salon=JSON.parse(localStorage.getItem("user")).user_type===2
-  const salon = true;
+    const salon=JSON.parse(localStorage.getItem("user")).user_type===3;
+  // const salon = true;
   return (
     <>
       {salon ? (

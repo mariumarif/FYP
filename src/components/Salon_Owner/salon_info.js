@@ -5,15 +5,23 @@ import logoo from '../../images/icon.png';
 import mansal from '../../images/men-salon-2.jpg';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import useIsUser from '../../useUser';
+import logout from '../../handlers';
 
 const SalonInfo = () => {
+    const history = useHistory();
+    const [refresh, setRefresh] = useState(false);
+    const isUser = useIsUser();
+
     const [isOpen, setIsOpen] = useState(false);
     const [salon, setSalon] = useState({});
-    const id = 1;
+    const id = JSON.parse(localStorage.getItem('salon'))?.id;
+    // debugger
     const fetchSalon = async () => {
         try {
             const resp = await axios.get(
-                `http://localhost:3000/salons?id=${id}`
+                `http://localhost:3000/salon?id=${id}`
             );
             resp?.data && setSalon(resp?.data?.[0]);
             debugger;
@@ -78,6 +86,17 @@ const SalonInfo = () => {
                                     </button>
                                 </Link>
                             </div>
+
+                            {/* Log out */}
+                            <div className='login-signup mr-2'>
+                                {!isUser?<Link to='/login'>
+                                    <button className='btn login-signup-btn px-4 py-2 mt-3'>
+                                        Login/Signup
+                                    </button>
+                                </Link>:<button onClick={() => {logout(history);setRefresh(x => !x)}} className='btn login-signup-btn px-4 py-2 mt-3'>
+                                        Sign Out
+                                    </button>}
+                            </div>
                         </div>
                     </nav>
                 </div>
@@ -90,19 +109,23 @@ const SalonInfo = () => {
                         <tbody>
                             <tr>
                                 <th>Salon Name:</th>
-                                <td>{salon.name}</td>
+                                <td>{salon?.name}</td>
                             </tr>
                             <tr>
                                 <th>Salon Address:</th>
-                                <td>{salon.address}</td>
+                                <td>{salon?.address}</td>
                             </tr>
                             <tr>
                                 <th>Salon Phone Number:</th>
-                                <td>{salon.contact}</td>
+                                <td>{salon?.contact}</td>
                             </tr>
                             <tr>
                                 <th>Salon Description:</th>
-                                <td>{salon.description}</td>
+                                <td>{salon?.description}</td>
+                            </tr>
+                            <tr>
+                                <th>Salon Timings:</th>
+                                <td>{salon?.timings}</td>
                             </tr>
                             <tr>
                                 <th>Salon Image:</th>
@@ -117,6 +140,7 @@ const SalonInfo = () => {
                             <input type='text' class="form-control mb-2" id='salonAddress' name='address' placeholder='Salon Address' value={salon.address} onChange={handleChange} />
                             <input type='number' class="form-control mb-2" id='salonPhone' name='contact' placeholder='Salon Phone' value={salon.contact} onChange={handleChange} />
                             <input type='text' class="form-control mb-2" id='salonDescription' name='description' placeholder='Salon Description' value={salon.description} onChange={handleChange} />
+                            <input type='text' class="form-control mb-2" id='salonTimings' name='timings' placeholder='Salon Timings' value={salon.timings} onChange={handleChange} />
                             <label for="salonImage">Update Image:</label>&nbsp;
                             <input type="file" id="salonImage" name="salonImage" />
                             <button type="submit" class="btn sal-service-update-btn" onClick={handleUpdate}>Update</button>

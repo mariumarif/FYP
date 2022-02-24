@@ -11,8 +11,8 @@ import { Redirect, Route } from "react-router-dom";
  */
 const ProtectedRoute = (props) => {
   var { component: Component, pathname, ...restProps } = props;
-  //   const admin=JSON.parse(localStorage.getItem("user")).user_type===1
-  const admin = true;
+    const admin=JSON.parse(localStorage.getItem("user")).user_type===1
+  // const admin = true;
   // const admin=
   return (
     <>

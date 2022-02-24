@@ -4,9 +4,18 @@ import "./beauty.css";
 import icon from "../../images/icon.png";
 import { Link, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import { editableInputTypes } from "@testing-library/user-event/dist/utils";
+import { useHistory } from 'react-router-dom';
+import useIsUser from '../../useUser';
+import logout from '../../handlers';
+
 let cartArray = [];
 
 const WomanSalon = () => {
+  const history = useHistory();
+  const [refresh, setRefresh] = useState(false);
+  const isUser = useIsUser();
+
   const { id } = useParams();
   const { pathname } = useLocation();
   const category = pathname.includes("woman") ? 2 : 1;
@@ -22,9 +31,13 @@ const WomanSalon = () => {
 
   const [cartItems, setCartItems] = useState([]);
   const handleId = (id) => {
-    cartArray.push(id);
-    localStorage.setItem("cartArray", JSON.stringify(cartArray));
-    setEx(p => !p);
+    const hasID = JSON.parse(localStorage.getItem('cartArray'))?.includes(id);
+    debugger;
+    if (!hasID) {
+      cartArray.push(id);
+      localStorage.setItem("cartArray", JSON.stringify(cartArray));
+      setEx(p => !p);
+    }
   };
 
   const [services, setServices] = useState([]);
@@ -72,9 +85,18 @@ const WomanSalon = () => {
             <Link className='cart-link' to='/Cart'>
               <div class="cart-icon">
                 <i className="fa fa-shopping-cart"></i>
-                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray')).length}</p>
+                <p className="total-items">{JSON.parse(localStorage.getItem('cartArray'))?.length || 0}</p>
               </div>
             </Link>
+            <div className='login-signup mr-2'>
+                {!isUser ? <Link to='/login'>
+                  <button className='btn login-signup-btn px-4 py-2 mt-3'>
+                    Login/Signup
+                  </button>
+                </Link> : <button onClick={() => { logout(history); setRefresh(x => !x) }} className='btn login-signup-btn px-4 py-2 mt-3'>
+                Sign Out
+                </button>}
+              </div>
           </nav>
         </div>
       </header>
